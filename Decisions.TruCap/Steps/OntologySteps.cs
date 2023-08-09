@@ -1,29 +1,28 @@
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
-using DecisionsFramework.ServiceLayer;
+using DecisionsFramework.Design.Flow;
+using Newtonsoft.Json;
 
-namespace Decisions.TruCap.Steps;
+namespace Decisions.TruCap.Steps
+{
+    [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Ontology")]
+    public class OntologySteps
+    {
+        public async Task<List<OntologyResponse>> GetOntologyList(string overrideBaseUrl, TruCapAuthentication authentication)
+        {
+            Task<string?> response = TruCapRest.TruCapGet(
+                overrideBaseUrl, $"/ontology", authentication);
 
-public class OntologySteps {
-public GetOntologyListResponse GetOntologyList(string overrideBaseUrl, TruCapAuthentication authentication) {
-    var client = new HttpClient();
-    var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-    var request = new HttpRequestMessage(HttpMethod.Get, url);
-    authentication.SetHeaders(request);
-    var response = await client.SendAsync(request);
-    response.EnsureSuccessStatusCode();
-    Console.WriteLine(await response.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<List<OntologyResponse>>(response.Result);
+        }
 
-}
+        public async Task<OntologyDetailsResponse> GetOntologyDetails(string overrideBaseUrl, TruCapAuthentication authentication,
+            string project, string docSubType)
+        {
+            Task<string?> response = TruCapRest.TruCapGet(
+                overrideBaseUrl, $"/ontology/{project}/{docSubType}", authentication);
 
-public GetOntologyDetailsResponse GetOntologyDetails(string overrideBaseUrl, TruCapAuthentication authentication, string project, string docSubType) {
-    var client = new HttpClient();
-    var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-    var request = new HttpRequestMessage(HttpMethod.Get, $"{url}/{project}/{docSubType}");
-    authentication.SetHeaders(request);
-    var response = await client.SendAsync(request);
-    response.EnsureSuccessStatusCode();
-    Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-}
+            return JsonConvert.DeserializeObject<OntologyDetailsResponse>(response.Result);
+        }
+    }
 }

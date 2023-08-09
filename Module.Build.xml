@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Resources NoComponents="true">
+	<CoreServicesDlls>
+      <string>./Decisions.TruCap/obj/Decisions.TruCap.dll</string>
+    </CoreServicesDlls>
+    <CliDlls/>
+    <WebPages/>
+    <InstallScript>		
+	</InstallScript>
+    <SqlScripts/>
+    <ObjectsToImport>
+    </ObjectsToImport>
+    <MsSqlScript/>
+    <CustomImages>
+		<string>./CustomModuleImages/*.*</string>	
+	</CustomImages>
+  </Resources>
+  <Version>8.13.0</Version>
+  <ImagePath>./image.png</ImagePath>
+  <Description></Description>
+</CreateModuleInfo>

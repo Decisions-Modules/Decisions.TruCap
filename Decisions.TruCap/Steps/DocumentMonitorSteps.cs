@@ -1,49 +1,50 @@
-namespace Decisions.TruCap.Steps;
+using Decisions.TruCap.Api;
+using Decisions.TruCap.Data;
+using DecisionsFramework.Design.Flow;
+using Newtonsoft.Json;
 
-public class DocumentMonitorSteps {
-    public void GetDocumentMonitorListByDetails(string overrideBaseUrl, TruCapAuthentication authentication, string project = "Default", string docSubType = "Default", DateTime startDate, DateTime endDate) {
-        var client = new HttpClient();
-        var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{url}/monitor/Project/{project}/DocumentSubType/{docSubType}/FromDate/2022-12-22/ToDate/2023-12-01/Status/MI,QC");
-        request.Headers.Add("sid", "");
-        request.Headers.Add("token", "");
-        var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
+namespace Decisions.TruCap.Steps
+{
+    [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Document Monitor")]
+    public class DocumentMonitorSteps
+    {
+        public List<DocumentMonitorResponse> GetDocumentMonitorListByDetails(string overrideBaseUrl,
+            TruCapAuthentication authentication, DateTime startDate, DateTime endDate, string project = "Default",
+            string docSubType = "Default")
+        {
+            Task<string?> response = TruCapRest.TruCapGet(
+                overrideBaseUrl,
+                $"monitor/Project/{project}/DocumentSubType/{docSubType}/FromDate/2022-12-22/ToDate/2023-12-01/Status/MI,QC",
+                authentication);
 
-    }
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+        }
 
-    public void GetDocumentMonitorListByDocumentHeaderId(string overrideBaseUrl, TruCapAuthentication authentication, string documentHeaderId) {
-        var client = new HttpClient();
-        var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{url}/monitor/DocumentId/{documentHeaderId}");
-        request.Headers.Add("sid", "");
-        request.Headers.Add("token", "");
-        var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
+        public List<DocumentMonitorResponse> GetDocumentMonitorListByDocumentHeaderId(string overrideBaseUrl,
+            TruCapAuthentication authentication, string documentHeaderId)
+        {
+            Task<string?> response = TruCapRest.TruCapGet(
+                overrideBaseUrl, $"monitor/DocumentId/{documentHeaderId}", authentication);
 
-    }
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+        }
 
-    public void GetDocumentMonitorListByParentId(string overrideBaseUrl, TruCapAuthentication authentication, string parentId) {
-        var client = new HttpClient();
-        var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{url}/monitor/ParentId/{parentId}");
-authentication.SetHeaders(authentication);
-        var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
+        public List<DocumentMonitorResponse> GetDocumentMonitorListByParentId(string overrideBaseUrl,
+            TruCapAuthentication authentication, string parentId)
+        {
+            Task<string?> response = TruCapRest.TruCapGet(
+                overrideBaseUrl, $"monitor/ParentId/{parentId}", authentication);
 
-    }
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+        }
 
-    public void GetDocumentMonitorListByDocumentName(string overrideBaseUrl, TruCapAuthentication authentication, string documentName) {
-        var client = new HttpClient();
-        var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{url}/monitor/DocumentName/{documentName}");
-authentication.SetHeaders(authentication);
-        var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
+        public List<DocumentMonitorResponse> GetDocumentMonitorListByDocumentName(string overrideBaseUrl,
+            TruCapAuthentication authentication, string documentName)
+        {
+            Task<string?> response = TruCapRest.TruCapGet(
+                overrideBaseUrl, $"monitor/DocumentName/{documentName}", authentication);
 
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+        }
     }
 }

@@ -1,8 +1,0 @@
-    public class GetDocumentStatusResponse
-    {
-        public int documentId { get; set; }
-        public int referenceNumber { get; set; }
-        public int statusId { get; set; }
-        public string statusName { get; set; }
-        public DateTime receivedDate { get; set; }
-    }

@@ -1,13 +1,19 @@
-namespace Decisions.TruCap.Data;
+using System.Runtime.Serialization;
+using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 
-public class TruCapAuthentication 
+namespace Decisions.TruCap.Data
 {
-    public string token { get; set; }
-    public string sid { get; set; }
-
-    public void SetHeaders(HttpRequestMessage request) 
+    [DataContract]
+    [Writable]
+    public class TruCapAuthentication
     {
-        request.Headers.Add("sid", sid);
-        request.Headers.Add("token", token);
+        public string token { get; set; }
+        public string sid { get; set; }
+
+        public void SetHeaders(HttpRequestMessage request)
+        {
+            request.Headers.Add("sid", sid);
+            request.Headers.Add("token", token);
+        }
     }
 }

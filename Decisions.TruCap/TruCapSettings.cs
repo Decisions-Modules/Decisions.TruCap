@@ -34,8 +34,7 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
          }
      }
 
-
-    public string GetBaseUrl(string overrideBaseUrl = null) {
+     public string GetBaseUrl(string? overrideBaseUrl) {
         var url = baseUrl;
         if (string.IsNullOrEmpty(overrideBaseUrl)) 
             url = overrideBaseUrl;

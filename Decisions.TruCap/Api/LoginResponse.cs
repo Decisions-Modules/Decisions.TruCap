@@ -1,9 +1,31 @@
-namespace Decisions.TruCap.Api;
+using System.Runtime.Serialization;
+using DecisionsFramework.Design.ConfigurationStorage.Attributes;
+using Newtonsoft.Json;
 
-public class LoginResponse {
-        public bool isSuccess { get; set; }
-        public string token { get; set; }
-        public string message { get; set; }
-        public string sid { get; set; }
+namespace Decisions.TruCap.Api
+{
+    [DataContract]
+    [Writable]
+    public class LoginResponse
+    {
+        [WritableValue]
+        [JsonProperty("isSuccess")]
+        public bool IsSuccess { get; set; }
+        
+        [WritableValue]
+        [JsonProperty("token")]
+        public string Token { get; set; }
+        
+        [WritableValue]
+        [JsonProperty("message")]
+        public string Message { get; set; }
+        
+        [WritableValue]
+        [JsonProperty("sid")]
+        public string Sid { get; set; }
+        
+        [WritableValue]
+        [JsonProperty("ValidationUrl")]
         public string ValidationUrl { get; set; }
+    }
 }
