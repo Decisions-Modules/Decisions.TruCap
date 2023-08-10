@@ -1,17 +1,20 @@
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
 using DecisionsFramework.Design.Flow;
+using DecisionsFramework.Design.Flow.StepImplementations;
+using DecisionsFramework.ServiceLayer;
 using Newtonsoft.Json;
 
 namespace Decisions.TruCap.Steps
 {
     [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Ontology")]
+    [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class OntologySteps
     {
         public async Task<List<OntologyResponse>> GetOntologyList(string overrideBaseUrl, TruCapAuthentication authentication)
         {
-            Task<string?> response = TruCapRest.TruCapGet(
-                overrideBaseUrl, $"/ontology", authentication);
+            string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
+            Task<string?> response = TruCapRest.TruCapGet(baseUrl, authentication);
 
             return JsonConvert.DeserializeObject<List<OntologyResponse>>(response.Result);
         }
@@ -19,8 +22,8 @@ namespace Decisions.TruCap.Steps
         public async Task<OntologyDetailsResponse> GetOntologyDetails(string overrideBaseUrl, TruCapAuthentication authentication,
             string project, string docSubType)
         {
-            Task<string?> response = TruCapRest.TruCapGet(
-                overrideBaseUrl, $"/ontology/{project}/{docSubType}", authentication);
+            string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
+            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 
             return JsonConvert.DeserializeObject<OntologyDetailsResponse>(response.Result);
         }

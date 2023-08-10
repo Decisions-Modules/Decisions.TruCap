@@ -3,6 +3,7 @@ using System.Text;
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
 using DecisionsFramework.Design.Flow;
+using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.ServiceLayer;
 using Newtonsoft.Json;
 
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 namespace Decisions.TruCap.Steps
 {
     [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Authentication")]
+    [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class AuthSteps
     {
         public async Task<LoginResponse> Login(string? overrideBaseUrl, string username, string password)
@@ -21,9 +23,9 @@ namespace Decisions.TruCap.Steps
                 throw new ArgumentNullException(password);
 
             var client = new HttpClient();
-            var url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
+            var baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
             
-            var request = new HttpRequestMessage(HttpMethod.Post, $"{url}login");
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/login");
 
             string credentials = $"{username}:{password}";
             byte[] credentialsBytes = Encoding.UTF8.GetBytes(credentials);
@@ -54,7 +56,8 @@ namespace Decisions.TruCap.Steps
 
         public bool IsLoggedIn(string? overrideBaseUrl, TruCapAuthentication authentication)
         {
-            Task<string?> response = TruCapRest.TruCapGet(overrideBaseUrl, "login/status", authentication);
+            string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
+            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/login/status", authentication);
 
             if (response.Result.Contains("(200)"))
             {
@@ -71,9 +74,10 @@ namespace Decisions.TruCap.Steps
             */
         }
 
-        public string Logout(string? overrideBaseUrl, TruCapAuthentication authentication)
+        public string? Logout(string? overrideBaseUrl, TruCapAuthentication authentication)
         {
-            return TruCapRest.TruCapDelete(overrideBaseUrl, "logout", authentication).Result;
+            string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
+            return TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result;
 
             /*
                 Status 200 OK is returned.

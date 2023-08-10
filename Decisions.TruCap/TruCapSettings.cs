@@ -18,9 +18,15 @@ namespace Decisions.TruCap;
 [Writable]
 public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPropertyChanged, IValidationSource
 {
-     // BaseUrl
-     [ORMField]
-     private string baseUrl = "https://localhost:44318/api/v2/";
+    internal const string TRUCAP_IMAGES_PATH = "../wwwroot/Content/CustomModuleImages/Decisions.TruCap/|trucap.svg";
+    
+    public TruCapSettings()
+    {
+        this.EntityName = "TruCap Settings";
+    }
+    
+    [ORMField]
+     private string baseUrl = "https://localhost:44318/api/v2";
 
      [DataMember]
      [WritableValue]
@@ -35,34 +41,26 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
      }
 
      public string GetBaseUrl(string? overrideBaseUrl) {
-        var url = baseUrl;
-        if (string.IsNullOrEmpty(overrideBaseUrl)) 
+        string url = baseUrl;
+        if (!string.IsNullOrEmpty(overrideBaseUrl)) 
             url = overrideBaseUrl;
 
         return url;
     }
 
-    public string GetBaseDocumentUrl(string overrideBaseUrl = null) 
+    public string GetBaseDocumentUrl(string? overrideBaseUrl) 
     {
-        var url = baseUrl;
-        if (string.IsNullOrEmpty(overrideBaseUrl)) 
-            url = overrideBaseUrl;
-
-        return $"{url}document";
+        return $"{GetBaseUrl(overrideBaseUrl)}/document";
+    }
+    
+    public string GetBaseDocumentMonitorUrl(string? overrideBaseUrl) 
+    {
+        return $"{GetBaseUrl(overrideBaseUrl)}/document/monitor";
     }
 
-    public string GetBaseOntologyUrl(string overrideUrl = null) {
-        var url = baseUrl;
-        if (string.IsNullOrEmpty(overrideUrl))
-            url = overrideUrl;
-
-        return $"{url}ontology";
-    }
-
-
-    public TruCapSettings()
+    public string GetBaseOntologyUrl(string? overrideBaseUrl)
     {
-        this.EntityName = "TruCap Module Settings";
+        return $"{GetBaseUrl(overrideBaseUrl)}/ontology";
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

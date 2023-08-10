@@ -1,13 +1,12 @@
 using Decisions.TruCap.Data;
-using DecisionsFramework.ServiceLayer;
 
 namespace Decisions.TruCap;
 
 public class TruCapRest
 {
-    public static async Task<string?> TruCapGet(string? urlOverride, string urlExtension, TruCapAuthentication authentication)
+    public static async Task<string?> TruCapGet(string url, TruCapAuthentication authentication)
     {
-        string url = $"{ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(urlOverride)}{urlExtension}";
+        //string url = $"{ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(urlOverride)}{urlExtension}";
         HttpClient client = new HttpClient();
         
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
@@ -32,9 +31,9 @@ public class TruCapRest
         }
     }
 
-    public static async Task<string?> TruCapDelete(string? urlOverride, string urlExtension, TruCapAuthentication authentication)
+    public static async Task<string?> TruCapDelete(string url, TruCapAuthentication authentication)
     {
-        string url = $"{ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(urlOverride)}{urlExtension}";
+        //string url = $"{ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(urlOverride)}{urlExtension}";
         HttpClient client = new HttpClient();
 
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
