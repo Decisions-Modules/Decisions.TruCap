@@ -7,6 +7,7 @@
 *.zip
 *.ps1.error
 .vs/*
+.idea/*
 Module.Modified.xml
 
 # Build results
