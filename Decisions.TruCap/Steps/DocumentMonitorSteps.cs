@@ -16,38 +16,38 @@ namespace Decisions.TruCap.Steps
             string docSubType = "Default")
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet(
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
                 $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/2022-12-22/ToDate/2023-12-01/Status/MI,QC",
                 authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
         }
 
         public List<DocumentMonitorResponse> GetDocumentMonitorListByDocumentHeaderId(string overrideBaseUrl,
             TruCapAuthentication authentication, string documentHeaderId)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentHeaderId}", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentHeaderId}", authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
         }
 
         public List<DocumentMonitorResponse> GetDocumentMonitorListByParentId(string overrideBaseUrl,
             TruCapAuthentication authentication, string parentId)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
         }
 
         public List<DocumentMonitorResponse> GetDocumentMonitorListByDocumentName(string overrideBaseUrl,
             TruCapAuthentication authentication, string documentName)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result);
+            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
         }
     }
 }

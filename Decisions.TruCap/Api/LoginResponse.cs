@@ -25,7 +25,7 @@ namespace Decisions.TruCap.Api
         public string Sid { get; set; }
         
         [WritableValue]
-        [JsonProperty("ValidationUrl")]
+        [JsonProperty("validationUrl")]
         public string ValidationUrl { get; set; }
     }
 }

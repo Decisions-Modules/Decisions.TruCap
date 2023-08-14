@@ -4,13 +4,13 @@ namespace Decisions.TruCap;
 
 public class TruCapRest
 {
-    public static async Task<string?> TruCapGet(string url, TruCapAuthentication authentication)
+    public static async Task<HttpResponseMessage> TruCapGet(string url, TruCapAuthentication authentication)
     {
-        //string url = $"{ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(urlOverride)}{urlExtension}";
         HttpClient client = new HttpClient();
         
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
-        authentication.SetHeaders(request);
+        request.Headers.Add("sid", authentication.sid);
+        request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
         try
         {
@@ -18,7 +18,7 @@ public class TruCapRest
             response.EnsureSuccessStatusCode();
             Console.WriteLine(await response.Content.ReadAsStringAsync());
 
-            return response.ToString();
+            return response;
         }
         catch (Exception ex)
         {
@@ -31,9 +31,8 @@ public class TruCapRest
         }
     }
 
-    public static async Task<string?> TruCapDelete(string url, TruCapAuthentication authentication)
+    public static async Task<HttpResponseMessage> TruCapDelete(string url, TruCapAuthentication authentication)
     {
-        //string url = $"{ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(urlOverride)}{urlExtension}";
         HttpClient client = new HttpClient();
 
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
@@ -44,7 +43,7 @@ public class TruCapRest
             HttpResponseMessage response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             
-            return response.ToString();
+            return response;
         }
         catch (Exception ex)
         {

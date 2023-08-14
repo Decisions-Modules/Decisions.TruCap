@@ -14,18 +14,18 @@ namespace Decisions.TruCap.Steps
         public async Task<List<OntologyResponse>> GetOntologyList(string overrideBaseUrl, TruCapAuthentication authentication)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet(baseUrl, authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(baseUrl, authentication);
 
-            return JsonConvert.DeserializeObject<List<OntologyResponse>>(response.Result);
+            return JsonConvert.DeserializeObject<List<OntologyResponse>>(response.Result.ToString());
         }
 
         public async Task<OntologyDetailsResponse> GetOntologyDetails(string overrideBaseUrl, TruCapAuthentication authentication,
             string project, string docSubType)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 
-            return JsonConvert.DeserializeObject<OntologyDetailsResponse>(response.Result);
+            return JsonConvert.DeserializeObject<OntologyDetailsResponse>(response.Result.ToString());
         }
     }
 }

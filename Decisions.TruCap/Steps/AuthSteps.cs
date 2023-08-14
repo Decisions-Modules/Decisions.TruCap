@@ -14,7 +14,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class AuthSteps
     {
-        public async Task<LoginResponse> Login(string? overrideBaseUrl, string username, string password)
+        public async Task<string> Login(string? overrideBaseUrl, string username, string password)
         {
             if (string.IsNullOrEmpty(username))
                 throw new ArgumentNullException(username);
@@ -25,15 +25,14 @@ namespace Decisions.TruCap.Steps
             var client = new HttpClient();
             var baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
             
-            var request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/login");
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/login");
 
             string credentials = $"{username}:{password}";
             byte[] credentialsBytes = Encoding.UTF8.GetBytes(credentials);
             string base64Credentials = Convert.ToBase64String(credentialsBytes);
 
             // Set the Authorization header
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Authorization", $"Basic {base64Credentials}");
+            request.Headers.Add("Authorization", $"Basic {base64Credentials}");
 
             try
             {
@@ -41,7 +40,9 @@ namespace Decisions.TruCap.Steps
                 response.EnsureSuccessStatusCode();
                 Console.WriteLine(await response.Content.ReadAsStringAsync()); // as LoginResponse
 
-                return JsonConvert.DeserializeObject<LoginResponse>(response.Content.ToString());
+                return await response.Content.ReadAsStringAsync();
+
+                //return JsonConvert.DeserializeObject<LoginResponse>(response.Content.ReadAsStreamAsync().ToString());
             }
             catch (Exception ex)
             {
@@ -57,14 +58,10 @@ namespace Decisions.TruCap.Steps
         public bool IsLoggedIn(string? overrideBaseUrl, TruCapAuthentication authentication)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
-            Task<string?> response = TruCapRest.TruCapGet($"{baseUrl}/login/status", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
+                $"{baseUrl}/login/status?sid={authentication.sid}&token={authentication.token}", authentication);
 
-            if (response.Result.Contains("(200)"))
-            {
-                return true;
-            }
-
-            return false;
+            return response.Result.StatusCode.Equals("200");
 
             /*
                 If login is live, then Status 200 returned.
@@ -77,7 +74,7 @@ namespace Decisions.TruCap.Steps
         public string? Logout(string? overrideBaseUrl, TruCapAuthentication authentication)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
-            return TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result;
+            return TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result.ToString();
 
             /*
                 Status 200 OK is returned.
