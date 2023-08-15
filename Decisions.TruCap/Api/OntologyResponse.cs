@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -31,5 +32,18 @@ namespace Decisions.TruCap.Api
         [WritableValue]
         [JsonProperty("documentSubTypeName")]
         public string DocumentSubTypeName { get; set; }
+        
+        public static List<OntologyResponse> JsonDeserialize(string json)
+        {
+            try
+            {
+                List<OntologyResponse>? text = JsonConvert.DeserializeObject<List<OntologyResponse>>(json);
+                return text;
+            }
+            catch (Exception e)
+            {
+                throw new BusinessRuleException(e.Message);
+            }
+        }
     }
 }

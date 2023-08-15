@@ -4,6 +4,7 @@ using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
 using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
+using DecisionsFramework.Design.Properties;
 using DecisionsFramework.ServiceLayer;
 using Newtonsoft.Json;
 
@@ -14,7 +15,9 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class AuthSteps
     {
-        public async Task<string> Login(string? overrideBaseUrl, string username, string password)
+        public async Task<LoginResponse> Login(
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl,
+            string username, string password)
         {
             if (string.IsNullOrEmpty(username))
                 throw new ArgumentNullException(username);
@@ -40,9 +43,7 @@ namespace Decisions.TruCap.Steps
                 response.EnsureSuccessStatusCode();
                 Console.WriteLine(await response.Content.ReadAsStringAsync()); // as LoginResponse
 
-                return await response.Content.ReadAsStringAsync();
-
-                //return JsonConvert.DeserializeObject<LoginResponse>(response.Content.ReadAsStreamAsync().ToString());
+                return LoginResponse.JsonDeserialize(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
@@ -55,31 +56,30 @@ namespace Decisions.TruCap.Steps
             }
         }
 
-        public bool IsLoggedIn(string? overrideBaseUrl, TruCapAuthentication authentication)
+        public bool IsLoggedIn(
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl,
+            TruCapAuthentication authentication)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
                 $"{baseUrl}/login/status?sid={authentication.sid}&token={authentication.token}", authentication);
 
-            return response.Result.StatusCode.Equals("200");
-
-            /*
-                If login is live, then Status 200 returned.
-                If login is expired, then Status 401 returned.
-                Exception:
-                Status 422 or 500 returned with message in response.
-            */
+            return response.Result.IsSuccessStatusCode;
         }
 
-        public string? Logout(string? overrideBaseUrl, TruCapAuthentication authentication)
+        public string? Logout(
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl,
+            TruCapAuthentication authentication)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
-            return TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result.ToString();
+            HttpResponseMessage response = TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result;
 
-            /*
-                Status 200 OK is returned.
-                Ignore exception?
-            */
+            if (response.IsSuccessStatusCode)
+            {
+                return "Logout successful.";
+            }
+
+            return "Could not logout.";
         }
     }
 }

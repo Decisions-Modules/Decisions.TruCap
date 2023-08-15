@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -27,5 +28,18 @@ namespace Decisions.TruCap.Api
         [WritableValue]
         [JsonProperty("validationUrl")]
         public string ValidationUrl { get; set; }
+        
+        public static LoginResponse? JsonDeserialize(string json)
+        {
+            try
+            {
+                LoginResponse? text = JsonConvert.DeserializeObject<LoginResponse>(json);
+                return text;
+            }
+            catch (Exception e)
+            {
+                throw new BusinessRuleException(e.Message);
+            }
+        }
     }
 }

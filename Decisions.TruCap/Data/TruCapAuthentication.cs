@@ -7,9 +7,11 @@ namespace Decisions.TruCap.Data
     [Writable]
     public class TruCapAuthentication
     {
+        [DataMember]
         [WritableValue]
         public string token { get; set; }
         
+        [DataMember]
         [WritableValue]
         public string sid { get; set; }
 

@@ -15,8 +15,7 @@ public class TruCapRest
         try
         {
             HttpResponseMessage response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            //response.EnsureSuccessStatusCode();
 
             return response;
         }
@@ -36,7 +35,8 @@ public class TruCapRest
         HttpClient client = new HttpClient();
 
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
-        authentication.SetHeaders(request);
+        request.Headers.Add("sid", authentication.sid);
+        request.Headers.Add("Authorization", $"Bearer {authentication.token}");
 
         try
         {

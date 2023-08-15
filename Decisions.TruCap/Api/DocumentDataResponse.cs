@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -203,6 +204,19 @@ namespace Decisions.TruCap.Api
         [WritableValue]
         [JsonProperty("documentSubType")]
         public List<DocumentSubType> DocumentSubType { get; set; }
+        
+        public static DocumentDataResponse? JsonDeserialize(string json)
+        {
+            try
+            {
+                DocumentDataResponse? text = JsonConvert.DeserializeObject<DocumentDataResponse>(json);
+                return text;
+            }
+            catch (Exception e)
+            {
+                throw new BusinessRuleException(e.Message);
+            }
+        }
     }
 
     [DataContract]
