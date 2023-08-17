@@ -15,7 +15,6 @@ public class TruCapRest
         try
         {
             HttpResponseMessage response = await client.SendAsync(request);
-            //response.EnsureSuccessStatusCode();
 
             return response;
         }

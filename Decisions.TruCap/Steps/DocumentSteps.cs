@@ -1,11 +1,11 @@
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 using DecisionsFramework.Data.DataTypes;
 using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
 using DecisionsFramework.ServiceLayer;
-using Newtonsoft.Json;
 
 namespace Decisions.TruCap.Steps
 {
@@ -20,22 +20,31 @@ namespace Decisions.TruCap.Steps
             string url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
-            authentication.SetHeaders(request);
+            request.Headers.Add("sid", authentication.sid);
+            request.Headers.Add("Authorization", $"Bearer {authentication.token}");
 
             MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(
-                new StreamContent(File.OpenRead("/C:/Users/mishra.sanjay/Desktop/Training 2023/EM10001112.tif")),
-                "file", "/C:/Users/mishra.sanjay/Desktop/Training 2023/EM10001112.tif");
-            content.Add(new StringContent(documentData.project), "Project");
-            content.Add(new StringContent(documentData.documentSubType), "DocumentSubType");
-            content.Add(new StringContent(documentData.FilterDocumentSubType), "FilterDocumentSubType");
-            content.Add(new StringContent(documentData.fileName), "FileName");
-            content.Add(new StringContent(documentData.filePath), "FilePath");
-            content.Add(new StringContent(documentData.label), "Label");
-            content.Add(new StringContent(documentData.metaData), "MetaData");
+            /*content.Add(new StreamContent(File.OpenRead(documentData.filePath)), "file", documentData.filePath);*/
+            content.Add(new ByteArrayContent(file.Contents), "file", file.FileName);
+            if (documentData.project != null)
+                content.Add(new StringContent(documentData.project), "Project");
+            if (documentData.documentSubType != null)
+                content.Add(new StringContent(documentData.documentSubType), "DocumentSubType");
+            if (documentData.FilterDocumentSubType != null)
+                content.Add(new StringContent(documentData.FilterDocumentSubType), "FilterDocumentSubType");
+            //if (documentData.fileName != null)
+                //content.Add(new StringContent(documentData.fileName), "FileName");
+            //if (documentData.filePath != null)
+                //content.Add(new StringContent(documentData.filePath), "FilePath");
+            if (documentData.label != null)
+                content.Add(new StringContent(documentData.label), "Label");
+            if (documentData.metaData != null)
+                content.Add(new StringContent(documentData.metaData), "MetaData");
             content.Add(new StringContent(documentData.isPrioritized.ToString()), "IsPrioritized");
             content.Add(new StringContent(documentData.waitForCompletion.ToString()), "WaitForCompletion");
-            content.Add(new StringContent(documentData.miUserName), "MIUserName");
+            if (documentData.miUserName != null)
+                content.Add(new StringContent(documentData.miUserName), "MIUserName");
+            
             request.Content = content;
 
             try
@@ -60,74 +69,170 @@ namespace Decisions.TruCap.Steps
         public async Task<DocumentDataResponse> GetDocumentDataByDocumentId(TruCapAuthentication authentication, string documentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(documentId))
+            {
+                throw new BusinessRuleException("documentId cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{documentId}", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
         public async Task<DocumentDataResponse> GetDocumentDataByReferenceNumber(TruCapAuthentication authentication, string referenceNumber,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(referenceNumber))
+            {
+                throw new BusinessRuleException("referenceNumber cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
         public async Task<DocumentDataResponse> GetDocumentDataByLabel(TruCapAuthentication authentication, string label,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(label))
+            {
+                throw new BusinessRuleException("label cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/label/{label}", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public async Task<DocumentDataResponse> GetDocumentDataByClientTransactionNumber(TruCapAuthentication authentication, string transactionNumber,
+        public async Task<DocumentDataResponse> GetDocumentDataByClientTransactionNumber(TruCapAuthentication authentication, string clientTransactionNumber,
         [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(clientTransactionNumber))
+            {
+                throw new BusinessRuleException("clientTransactionNumber cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{transactionNumber}", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public async Task<DocumentDataResponse> GetDocumentStatusByDocumentId(TruCapAuthentication authentication, string documentId,
+        public async Task<List<DocumentStatusResponse>> GetDocumentStatusByDocumentId(TruCapAuthentication authentication, string documentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(documentId))
+            {
+                throw new BusinessRuleException("documentId cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{documentId}/status", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentStatusResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
 
-        public async Task<DocumentDataResponse> GetDocumentStatusByReferenceNumber(TruCapAuthentication authentication, string referenceNumber,
+        public async Task<List<DocumentStatusResponse>> GetDocumentStatusByReferenceNumber(TruCapAuthentication authentication, string referenceNumber,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(referenceNumber))
+            {
+                throw new BusinessRuleException("referenceNumber cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}/status", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentStatusResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public async Task<DocumentDataResponse> GetDocumentStatusByLabel(TruCapAuthentication authentication, string label,
+        public async Task<List<DocumentStatusResponse>> GetDocumentStatusByLabel(TruCapAuthentication authentication, string label,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(label))
+            {
+                throw new BusinessRuleException("label cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/label/{label}/status", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentStatusResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public async Task<DocumentDataResponse> GetDocumentStatusByClientTransactionNumber(TruCapAuthentication authentication, string transactionNumber,
+        public async Task<List<DocumentStatusResponse>> GetDocumentStatusByClientTransactionNumber(TruCapAuthentication authentication, string clientTransactionNumber,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(clientTransactionNumber))
+            {
+                throw new BusinessRuleException("clientTransactionNumber cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{transactionNumber}/status", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}/status", authentication);
 
-            return DocumentDataResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            try
+            {
+                return DocumentStatusResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
         public async Task<DocumentDataResponse> UpdateDocumentData(TruCapAuthentication authentication,

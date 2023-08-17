@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -26,6 +27,19 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("receivedDate")]
-        public DateTime ReceivedDate { get; set; }
+        public string ReceivedDate { get; set; }
+
+        public static List<DocumentStatusResponse>? JsonDeserialize(string json)
+        {
+            try
+            {
+                List<DocumentStatusResponse>? text = JsonConvert.DeserializeObject<List<DocumentStatusResponse>>(json);
+                return text;
+            }
+            catch (Exception e)
+            {
+                throw new BusinessRuleException(e.Message);
+            }
+        }
     }
 }

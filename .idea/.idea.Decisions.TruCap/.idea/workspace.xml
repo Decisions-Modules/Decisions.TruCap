@@ -8,6 +8,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b67d824fdfa34a0e895555ac5f2194e51036000/1a/8f34587a/FileData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b67d824fdfa34a0e895555ac5f2194e51036000/4a/d978af62/MultiPartFormDataPart.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b67d824fdfa34a0e895555ac5f2194e51036000/de/c119fedd/PropertyClassificationAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2ba593798f2507cbaba8ba2144110cdc395f6cc64695a55225846f21ab5e78d/HttpContent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/794bcfedceb3c6d957fbddf0e1c9a04afca77f9b5470c6859466cfba35e1ddb1/Task.cs" root0="SKIP_HIGHLIGHTING" />

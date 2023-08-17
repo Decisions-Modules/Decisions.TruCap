@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using DecisionsFramework.Data.DataTypes;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 
 namespace Decisions.TruCap.Data
@@ -9,27 +10,27 @@ namespace Decisions.TruCap.Data
     {
         [DataMember]
         [WritableValue]
-        public string project { get; set; }
+        public string? project { get; set; }
 
         [DataMember]
         [WritableValue]
-        public string documentSubType { get; set; }
+        public string? documentSubType { get; set; }
 
         [DataMember]
         [WritableValue]
-        public string FilterDocumentSubType { get; set; }
+        public string? FilterDocumentSubType { get; set; }
+
+        // [DataMember]
+        // [WritableValue]
+        // public string? fileName { get; set; }
+
+        // [DataMember]
+        // [WritableValue]
+        // public string? filePath { get; set; }
 
         [DataMember]
         [WritableValue]
-        public string fileName { get; set; }
-
-        [DataMember]
-        [WritableValue]
-        public string filePath { get; set; }
-
-        [DataMember]
-        [WritableValue]
-        public string label { get; set; }
+        public string? label { get; set; }
 
         [DataMember]
         [WritableValue]
@@ -45,6 +46,6 @@ namespace Decisions.TruCap.Data
 
         [DataMember]
         [WritableValue]
-        public string miUserName { get; set; }
+        public string? miUserName { get; set; }
     }
 }
