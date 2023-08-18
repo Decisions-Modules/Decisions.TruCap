@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -63,5 +64,18 @@ namespace Decisions.TruCap.Api
         [WritableValue]
         [JsonProperty("CurrentStageCode")]
         public string CurrentStageCode { get; set; }
+        
+        public static List<DocumentMonitorResponse>? JsonDeserialize(string json)
+        {
+            try
+            {
+                List<DocumentMonitorResponse>? text = JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(json);
+                return text;
+            }
+            catch (Exception e)
+            {
+                throw new BusinessRuleException(e.Message);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
@@ -24,6 +25,16 @@ namespace Decisions.TruCap.Steps
         public async Task<OntologyDetailsResponse> GetOntologyDetails(TruCapAuthentication authentication, string project, string docSubType,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(project))
+            {
+                throw new BusinessRuleException("project cannot be null or empty.");
+            }
+            
+            if (string.IsNullOrEmpty(docSubType))
+            {
+                throw new BusinessRuleException("docSubType cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 

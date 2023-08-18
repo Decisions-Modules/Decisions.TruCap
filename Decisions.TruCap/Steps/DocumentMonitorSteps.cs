@@ -1,9 +1,10 @@
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
+using DecisionsFramework.Design.Properties;
 using DecisionsFramework.ServiceLayer;
-using Newtonsoft.Json;
 
 namespace Decisions.TruCap.Steps
 {
@@ -11,43 +12,91 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class DocumentMonitorSteps
     {
-        public List<DocumentMonitorResponse> GetDocumentMonitorListByDetails(string overrideBaseUrl,
-            TruCapAuthentication authentication, DateTime startDate, DateTime endDate, string project = "Default",
-            string docSubType = "Default")
+        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
+            string startDate, string endDate, string project, string docSubType,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(project))
+            {
+                throw new BusinessRuleException("project cannot be null or empty.");
+            }
+            
+            if (string.IsNullOrEmpty(docSubType))
+            {
+                throw new BusinessRuleException("docSubType cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
-                $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/2022-12-22/ToDate/2023-12-01/Status/MI,QC",
+                $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/{startDate}/ToDate/{endDate}",
                 authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
+            try
+            {
+                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public List<DocumentMonitorResponse> GetDocumentMonitorListByDocumentHeaderId(string overrideBaseUrl,
-            TruCapAuthentication authentication, string documentHeaderId)
+        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (documentId == null)
+            {
+                throw new BusinessRuleException("documentId cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentHeaderId}", authentication);
+            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
+            try
+            {
+                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public List<DocumentMonitorResponse> GetDocumentMonitorListByParentId(string overrideBaseUrl,
-            TruCapAuthentication authentication, string parentId)
+        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
+            try
+            {
+                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
 
-        public List<DocumentMonitorResponse> GetDocumentMonitorListByDocumentName(string overrideBaseUrl,
-            TruCapAuthentication authentication, string documentName)
+        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
+            if (string.IsNullOrEmpty(documentName))
+            {
+                throw new BusinessRuleException("documentName cannot be null or empty.");
+            }
+            
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
 
-            return JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(response.Result.ToString());
+            try
+            {
+                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+            }
         }
     }
 }

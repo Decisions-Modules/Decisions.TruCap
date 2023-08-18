@@ -43,7 +43,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("parentDocumentId")]
-        public object ParentDocumentId { get; set; }
+        public string ParentDocumentId { get; set; }
         
         [WritableValue]
         [JsonProperty("parentDocumentFilePath")]

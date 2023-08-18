@@ -235,18 +235,19 @@ namespace Decisions.TruCap.Steps
             }
         }
 
-        public async Task<DocumentDataResponse> UpdateDocumentData(TruCapAuthentication authentication,
+        public async Task<DocumentDataResponse> UpdateDocumentData(TruCapAuthentication authentication, Document documentData,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             HttpClient client = new HttpClient();
             string url = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, url);
-            authentication.SetHeaders(request);
+            request.Headers.Add("sid", authentication.sid);
+            request.Headers.Add("Authorization", $"Bearer {authentication.token}");
 
-            StringContent content = new StringContent("", null, "text/plain");
+            StringContent content = new StringContent(documentData.ToString(), null, "application/json");
             request.Content = content;
-
+            
             try
             {
                 HttpResponseMessage response = await client.SendAsync(request);
