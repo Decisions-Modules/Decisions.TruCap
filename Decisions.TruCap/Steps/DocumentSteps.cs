@@ -6,6 +6,7 @@ using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
 using DecisionsFramework.ServiceLayer;
+using Newtonsoft.Json;
 
 namespace Decisions.TruCap.Steps
 {
@@ -245,7 +246,8 @@ namespace Decisions.TruCap.Steps
             request.Headers.Add("sid", authentication.sid);
             request.Headers.Add("Authorization", $"Bearer {authentication.token}");
 
-            StringContent content = new StringContent(documentData.ToString(), null, "application/json");
+            string json = JsonConvert.SerializeObject(documentData);
+            StringContent content = new StringContent(json, null, "application/json");
             request.Content = content;
             
             try
