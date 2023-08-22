@@ -236,6 +236,7 @@ namespace Decisions.TruCap.Steps
             }
         }
 
+        [ExcludeMethodOnAutoRegister]
         public async Task<DocumentDataResponse> UpdateDocumentData(TruCapAuthentication authentication, Document documentData,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {

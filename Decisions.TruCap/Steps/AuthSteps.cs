@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using System.Text;
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
@@ -6,7 +5,6 @@ using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
 using DecisionsFramework.ServiceLayer;
-using Newtonsoft.Json;
 
 
 namespace Decisions.TruCap.Steps
@@ -16,8 +14,9 @@ namespace Decisions.TruCap.Steps
     public class AuthSteps
     {
         public async Task<LoginResponse> Login(
-            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl,
-            string username, string password)
+            [PropertyClassification(0, "Username", "Credentials")]string username,
+            [PropertyClassification(1, "Password", "Credentials")]string password,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (string.IsNullOrEmpty(username))
                 throw new ArgumentNullException(username);
@@ -56,9 +55,8 @@ namespace Decisions.TruCap.Steps
             }
         }
 
-        public bool IsLoggedIn(
-            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl,
-            TruCapAuthentication authentication)
+        public bool IsLoggedIn(TruCapAuthentication authentication,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
@@ -67,9 +65,8 @@ namespace Decisions.TruCap.Steps
             return response.Result.IsSuccessStatusCode;
         }
 
-        public string? Logout(
-            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl,
-            TruCapAuthentication authentication)
+        public string? Logout(TruCapAuthentication authentication,
+            [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
             HttpResponseMessage response = TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result;

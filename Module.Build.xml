@@ -9,7 +9,8 @@
     <InstallScript>		
 	</InstallScript>
     <SqlScripts/>
-    <ObjectsToImport>
+    <ObjectsToImport> 
+		<string>./ImportedObjects/*.*</string>
     </ObjectsToImport>
     <MsSqlScript/>
     <CustomImages>

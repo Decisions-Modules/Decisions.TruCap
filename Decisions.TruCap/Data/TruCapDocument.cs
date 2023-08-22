@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using DecisionsFramework.Data.DataTypes;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 
 namespace Decisions.TruCap.Data
