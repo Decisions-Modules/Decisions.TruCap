@@ -40,7 +40,6 @@ namespace Decisions.TruCap.Steps
             {
                 HttpResponseMessage response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync()); // as LoginResponse
 
                 return LoginResponse.JsonDeserialize(await response.Content.ReadAsStringAsync());
             }

@@ -5,7 +5,6 @@ using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
 using DecisionsFramework.ServiceLayer;
-using Newtonsoft.Json;
 
 namespace Decisions.TruCap.Steps
 {

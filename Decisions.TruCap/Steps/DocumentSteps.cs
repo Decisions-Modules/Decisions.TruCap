@@ -25,7 +25,6 @@ namespace Decisions.TruCap.Steps
             request.Headers.Add("Authorization", $"Bearer {authentication.token}");
 
             MultipartFormDataContent content = new MultipartFormDataContent();
-            /*content.Add(new StreamContent(File.OpenRead(documentData.filePath)), "file", documentData.filePath);*/
             content.Add(new ByteArrayContent(file.Contents), "file", file.FileName);
             if (documentData.project != null)
                 content.Add(new StringContent(documentData.project), "Project");
@@ -33,10 +32,6 @@ namespace Decisions.TruCap.Steps
                 content.Add(new StringContent(documentData.documentSubType), "DocumentSubType");
             if (documentData.FilterDocumentSubType != null)
                 content.Add(new StringContent(documentData.FilterDocumentSubType), "FilterDocumentSubType");
-            //if (documentData.fileName != null)
-                //content.Add(new StringContent(documentData.fileName), "FileName");
-            //if (documentData.filePath != null)
-                //content.Add(new StringContent(documentData.filePath), "FilePath");
             if (documentData.label != null)
                 content.Add(new StringContent(documentData.label), "Label");
             if (documentData.metaData != null)
