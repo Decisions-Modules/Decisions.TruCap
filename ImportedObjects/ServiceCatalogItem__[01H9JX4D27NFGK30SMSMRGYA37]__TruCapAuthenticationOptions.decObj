@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExportDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TruCap Authentication Options</Name>
+  <ParentFolderId>01H9JWJX1DR8JE1TT1KNK3BYVP</ParentFolderId>
+  <ParentFolderPath>System/Applications/Workflow Catalog/TruCap</ParentFolderPath>
+  <TypeName>DecisionsFramework.ServiceLayer.Services.ServiceCatalog.ServiceCatalogItem</TypeName>
+  <ShortTypeName>Service Catalog Item</ShortTypeName>
+  <Id>01H9JX4D27NFGK30SMSMRGYA37</Id>
+  <ExportedBy>admin@decisions.com</ExportedBy>
+  <ExportedOn>2023-09-05T10:58:45.5838551-04:00</ExportedOn>
+  <PlatformVersion>8.15.0.72385</PlatformVersion>
+  <DependsOn />
+  <DependsOnAssemblies />
+  <StructureImport>false</StructureImport>
+  <DependsOnStructures>false</DependsOnStructures>
+  <Size>996</Size>
+  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAVlclV+UpyM4TAQAASAEAAAEAAAAx8yrOzwsuyS9KTE8N8GZmEWFg4OBgcAlTDZepfbX0KAMDgwgjAwM3kEZSWNJ/luuQgUBL/NI3li0VAl4L2W8vC3vtf3RRxaSIcM1eziW9SpfKzW0rAvfo/H57xuANtwSL/g3exxHruktNnhdyMirz8bPG+06TYfLYsOp21Goz00dt/LlSu1yL12vHdKjP4t8yX1Vs7oRfv1o38+XPDEjvXLZ05ZX+/UYf66Q7txdblnPVWkkFu0l+TNK2zjYIybBWVvnIVT2pdOrjzVd4VwVEajYeOFp69tw7frNTf648D6w5ceyk0cmaee/Nf/80SbogLKGz5v19Jh6GAG9GJmMG3P5FBSjBxMoGEmIEQksg/Q6sAABQSwMEFAAACAgAVlclV/rhGAsAAgAAbgMAAAsAAABKc29uU3RvcmFnZXySUY+iMBSF/wrhmTUwOAomJqugM+oqZmTd8WmD9ArdKS1pYWaM8b/vLYq7M5vsC3DPPfSefu3JtM3Bydzqx884Wkfj+SSIzYFtYblbT1aj5cQcmCGkVFHB1VQmBbwJ+dLZgHylKXxLjiDbQrUfQVIlTGSfylkFhWX8u5ZlbEFqaeh1nPuO3bEtI6hZVUsYcqgrmTDLWNd7RtMFHGPxAnzIa8ZMy0xIQTlVaKmE3FJ4izg7YuCD7jEWJ5kKcTgqWpBpTl+BtP1riQZAyUYpTfhTzaPDgVEOVxtqmzrLQFWx+K5A3uTbniJJGrlZIU9kBktBgKGyEoFQlZYl4BQy1tmazF9Ji6GTiuKPI+LXOD3Xu/Pv7X7f813PddxeF03AK1odp4LhwFmoRzqP/vzH/NkJn7z5xIljZ7FauOPddn1zr5AyOmNZB0lpjOoq1zrGx+FGVOqX0ub3EtJK0ziqGGMXJYMmyBcHu3nCCQN5YXkyZ6S5ImPKE3ncIHoMvv+F/+uGc0Y/JQT4FRVVmsKolOKdFpfdXeQJoVUgyvbACkHogf6XUmv5BMmz/V7Xd+2uj55S3xSVT4UsHjX9gTlSISiacTx6y1Qf7+SN4nM3vOuvpg8L194sN8unh93I7f/lvyylz1jlAu/ZUuwpa/cSgqZFPlYRb35AHA2v8/m3AAMAUEsBAjMAFAAACAgAVlclV+UpyM4TAQAASAEAAAEAAAAAAAAAAAAAAAAAAAAAADFQSwECMwAUAAAICABWVyVX+uEYCwACAABuAwAACwAAAAAAAAAAAAAAAAAyAQAASnNvblN0b3JhZ2VQSwUGAAAAAAIAAgBoAAAAWwMAAAAA</Data>
+  <RequiresApproval>false</RequiresApproval>
+  <OverridingImport>false</OverridingImport>
+  <ModuleName>Decisions.TruCap</ModuleName>
+  <ImportOrder>400</ImportOrder>
+  <ModifiedOn>2023-09-05T10:50:09.6493049-04:00</ModifiedOn>
+  <AllTagsData />
+  <TagData />
+</ExportDescription>

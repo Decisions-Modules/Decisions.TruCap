@@ -3,6 +3,8 @@ using System.Runtime.Serialization;
 using DecisionsFramework;
 using DecisionsFramework.Data.ORMapper;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
+using DecisionsFramework.Design.Properties;
+using DecisionsFramework.Design.Properties.Attributes;
 using DecisionsFramework.ServiceLayer;
 using DecisionsFramework.ServiceLayer.Actions;
 using DecisionsFramework.ServiceLayer.Actions.Common;
@@ -28,6 +30,7 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
     [ORMField]
      private string baseUrl = "https://localhost:44318/api/v2";
 
+     [PropertyClassification(0, "Base URL", "TruCap Settings")]
      [DataMember]
      [WritableValue]
      public string BaseUrl
@@ -38,6 +41,18 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
              baseUrl = value;
              OnPropertyChanged(nameof(BaseUrl));
          }
+     }
+     
+     [PropertyClassification(1, " ", "TruCap Settings")]
+     [ReadonlyEditor]
+     [ExcludeInDescription]
+     public string ApiKeyMessage
+     {
+         get
+         {
+             return "A license for SaaS TruCap is needed. Learn more at: https://www.datamatics.com/intelligent-automation/idp-trucap.";
+         }
+         set { }
      }
 
      public string GetBaseUrl(string? overrideBaseUrl) {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExportDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TruCap</Name>
+  <ParentFolderId>SERVICE CATALOG FOLDER</ParentFolderId>
+  <ParentFolderPath>System/Applications/Workflow Catalog</ParentFolderPath>
+  <TypeName>DecisionsFramework.ServiceLayer.Services.Folder.Folder</TypeName>
+  <ShortTypeName>Folder</ShortTypeName>
+  <Id>01H9JWJX1DR8JE1TT1KNK3BYVP</Id>
+  <ExportedBy>admin@decisions.com</ExportedBy>
+  <ExportedOn>2023-09-05T10:58:45.3863997-04:00</ExportedOn>
+  <PlatformVersion>8.15.0.72385</PlatformVersion>
+  <DependsOn />
+  <DependsOnAssemblies />
+  <StructureImport>false</StructureImport>
+  <DependsOnStructures>false</DependsOnStructures>
+  <Size>663</Size>
+  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAVlclV/BHAVoUAgAAFgQAAAsAAABKc29uU3RvcmFnZZRS246iQBD9FcIzQdB11UlMVgF3vEKUOOvTpoVy6EzTTZpGYyb++3ZLgzt7S/ZFrFOnqs6prnfTMZ/ezb36+R6HUThdBF5sPjmWDA9RsJmsA/PJ9CHBJWa0nHGUw4XxN3sH/IwTWKEr8CYo7RkjqYzrj2X8XmcZe+AKGg9tt287tmMZXkVExWFMoRIcEcuIqiPByRKuMXsDOqYVIaZlnu5N577U47jPo8XL4pvrb4eLwI1jd7lZ9qaHfdTyppChM2Y8vhbwPw70Hw8JRNjrL+HsQ2s5q8zYZU5jDmqGUEB1XAOtWoqafELSoMwliE5hy5iQ6KkVqgRupCYJ1u3bTMhVJN1KBNMMOBYR8ByXdyN6IIVSYPq6gjMQCX1S1XJfERKZDHfXUkDemRSFXCgSqq7zIs2fCLsY2lQn5pWHCjWkrPlah3YESSUnX2twnqquh10crI1ZuPKDbV33gaT9ZajcVccaKjWWZJikHOgzOkNTpFOIXj2d9dmGiT9QVMdCvuQJQ7rHcGlgnKZAmzZpjiku5SUJxhUppKSpByoeTtQh7YLtfu4FhjeJJ6vw68NSzdTv0i4o4YAEpCH15UcmPveG3VHfGXTd/sgdjAaDniTlLL0L/Atn2H00miphd8Ff0uZA7YTlP3X5BwVxuc0zpI1xHeq56mp8ICBago5C2txUGaRYeKyo13OzTPW6zu32QwABBgBQSwECMwAUAAAICABWVyVX8EcBWhQCAAAWBAAACwAAAAAAAAAAAAAAAAAAAAAASnNvblN0b3JhZ2VQSwUGAAAAAAEAAQA5AAAAPQIAAAAA</Data>
+  <RequiresApproval>false</RequiresApproval>
+  <OverridingImport>false</OverridingImport>
+  <ModuleName>Decisions.TruCap</ModuleName>
+  <ImportOrder>104</ImportOrder>
+  <ModifiedOn>2023-09-05T10:40:15.9179782-04:00</ModifiedOn>
+  <BehaviorTypeName>DecisionsFramework.ServiceLayer.Services.ServiceCatalog.ServiceCatalogFolderBehavior</BehaviorTypeName>
+  <TagData />
+</ExportDescription>
