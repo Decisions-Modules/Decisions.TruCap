@@ -33,11 +33,11 @@ namespace Decisions.TruCap.Api
         [JsonProperty("documentSubTypeName")]
         public string DocumentSubTypeName { get; set; }
         
-        public static List<OntologyResponse> JsonDeserialize(string json)
+        public static OntologyResponse[] JsonDeserialize(string json)
         {
             try
             {
-                List<OntologyResponse>? text = JsonConvert.DeserializeObject<List<OntologyResponse>>(json);
+                OntologyResponse[]? text = JsonConvert.DeserializeObject<OntologyResponse[]>(json);
                 return text;
             }
             catch (Exception e)

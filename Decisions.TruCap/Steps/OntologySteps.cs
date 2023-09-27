@@ -12,7 +12,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class OntologySteps
     {
-        public async Task<List<OntologyResponse>> GetOntologyList(TruCapAuthentication authentication,
+        public async Task<OntologyResponse[]> GetOntologyList(TruCapAuthentication authentication,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);

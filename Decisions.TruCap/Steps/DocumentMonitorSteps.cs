@@ -12,7 +12,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class DocumentMonitorSteps
     {
-        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
+        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
             string startDate, string endDate, string project, string docSubType,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
@@ -41,7 +41,7 @@ namespace Decisions.TruCap.Steps
             }
         }
 
-        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
+        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (documentId == null)
@@ -62,7 +62,7 @@ namespace Decisions.TruCap.Steps
             }
         }
 
-        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
+        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
@@ -78,7 +78,7 @@ namespace Decisions.TruCap.Steps
             }
         }
 
-        public async Task<List<DocumentMonitorResponse>> GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
+        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (string.IsNullOrEmpty(documentName))

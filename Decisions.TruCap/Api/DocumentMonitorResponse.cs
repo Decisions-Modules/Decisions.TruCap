@@ -65,11 +65,11 @@ namespace Decisions.TruCap.Api
         [JsonProperty("CurrentStageCode")]
         public string CurrentStageCode { get; set; }
         
-        public static List<DocumentMonitorResponse>? JsonDeserialize(string json)
+        public static DocumentMonitorResponse[]? JsonDeserialize(string json)
         {
             try
             {
-                List<DocumentMonitorResponse>? text = JsonConvert.DeserializeObject<List<DocumentMonitorResponse>>(json);
+                DocumentMonitorResponse[]? text = JsonConvert.DeserializeObject<DocumentMonitorResponse[]>(json);
                 return text;
             }
             catch (Exception e)
