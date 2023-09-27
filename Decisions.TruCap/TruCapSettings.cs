@@ -24,13 +24,13 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
     
     public TruCapSettings()
     {
-        this.EntityName = "TruCap Settings";
+        this.EntityName = "TruCap+ Settings";
     }
     
     [ORMField]
      private string baseUrl = "https://localhost:44318/api/v2";
 
-     [PropertyClassification(0, "Base URL", "TruCap Settings")]
+     [PropertyClassification(0, "Base URL", "TruCap+ Settings")]
      [DataMember]
      [WritableValue]
      public string BaseUrl
@@ -43,14 +43,14 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
          }
      }
      
-     [PropertyClassification(1, " ", "TruCap Settings")]
+     [PropertyClassification(1, " ", "TruCap+ Settings")]
      [ReadonlyEditor]
      [ExcludeInDescription]
      public string ApiKeyMessage
      {
          get
          {
-             return "A license for SaaS TruCap is needed. Learn more at: https://www.datamatics.com/intelligent-automation/idp-trucap.";
+             return "A license for SaaS TruCap+ is needed. Learn more at: https://www.datamatics.com/intelligent-automation/idp-trucap.";
          }
          set { }
      }
@@ -112,7 +112,7 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
 
         if (canAdministrate)
         {
-            actions.Add(new EditEntityAction(typeof(TruCapSettings), "Edit", "Edits TruCap Module Settings") 
+            actions.Add(new EditEntityAction(typeof(TruCapSettings), "Edit", "Edits TruCap+ Module Settings") 
             {
                 IsDefaultGridAction = true,
                 OkActionName = "SAVE",

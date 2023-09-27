@@ -9,7 +9,7 @@ using DecisionsFramework.ServiceLayer;
 
 namespace Decisions.TruCap.Steps
 {
-    [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Authentication")]
+    [AutoRegisterMethodsOnClass(true, "Integration/TruCap+/Authentication")]
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class AuthSteps
     {
@@ -47,7 +47,7 @@ namespace Decisions.TruCap.Steps
             {
                 if (ex.Message.Contains("timed out"))
                 {
-                    throw new Exception("TruCap took too long to respond and has timed out.", ex);
+                    throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
                 throw;

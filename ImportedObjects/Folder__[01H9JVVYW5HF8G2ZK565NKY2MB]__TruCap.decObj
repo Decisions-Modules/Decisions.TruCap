@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ExportDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>TruCap</Name>
+  <Name>TruCap+</Name>
   <ParentFolderId>COMPONENTS FOLDER</ParentFolderId>
-  <ParentFolderPath>System/Designers/Catalog</ParentFolderPath>
+  <ParentFolderPath>Designers/System/Catalog</ParentFolderPath>
   <TypeName>DecisionsFramework.ServiceLayer.Services.Folder.Folder</TypeName>
   <ShortTypeName>Designer Folder</ShortTypeName>
   <Id>01H9JVVYW5HF8G2ZK565NKY2MB</Id>
   <ExportedBy>admin@decisions.com</ExportedBy>
-  <ExportedOn>2023-09-05T10:58:45.5649626-04:00</ExportedOn>
-  <PlatformVersion>8.15.0.72385</PlatformVersion>
+  <ExportedOn>2023-09-27T11:03:39.1658462-04:00</ExportedOn>
+  <PlatformVersion>8.15.0.72435</PlatformVersion>
   <DependsOn />
   <DependsOnAssemblies />
   <StructureImport>false</StructureImport>
   <DependsOnStructures>false</DependsOnStructures>
-  <Size>666</Size>
-  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAVlclV8/Tz2YXAgAA3QMAAAsAAABKc29uU3RvcmFnZWxSXY+iMBT9K4RnVlHRVRMfFHB0lI8MxIn7sqlwle5ga9qiIRP/+7Z86E52eKC555577j23/dRNffqp79TvdxyEweLVtWN9ahoy3IeuP/dcfao7kGCOKeFLhs5wo+yjEwG74gS2qATWBryzpHkq4/owtP/rDG0HTEGzcac37Jgd09DsIhcFgxmBQjCUG1pYHHKcbKCM6QeQGSnyXDf0YyW6duQ8Zm81ed3t9u/D1XL80v+1GY6G/mbf9xYP3gIydMWUxeUFvnfgAMcn0hzAQkb/QCLq0aUMz+htTWIGqlwooDh4QIpWuBI9Ijm7zCWILOCNUiHR42MG1duX7Spq3UV76NeUgKlIOpIIJhkwLEJgZ8yrYZvOBLjA5LSFK+QSslS13EmIRCbDqOQCzt22A+/aSKCcnroxK2x0UcK85jS9GzuQFLJbWYPrVMLLbfCueXN//uJ6rh9ry2DruG+1wBd24zJDPCoONcQbLMlwnjIgK3SFtqhJIVLaTdahPhXfUJTiRV7VEUO6w3BrYZymQFqZ9IwJ5vKpCMoUKSB5Ww9EPC2pl2IHXhj40kz0dFOTmot5LClhgASkAXHkIROjwbg/GZoja2T1BgOzP1FXdKZpNdtXzs+e2bcGpmWZ5lNooWaK9lHsev8UVuiP56f8MLmzK6StvSZsWihFB3IQD0ITBaR9NtxNsbDppV7C3dDVZZr3+18BBgBQSwECMwAUAAAICABWVyVXz9PPZhcCAADdAwAACwAAAAAAAAAAAAAAAAAAAAAASnNvblN0b3JhZ2VQSwUGAAAAAAEAAQA5AAAAQAIAAAAA</Data>
+  <Size>757</Size>
+  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAc1g7V7uK5lNyAgAAXgQAAAsAAABKc29uU3RvcmFnZWxTbW/aMBD+K1G+9MNSCK+irFSCJLS0QKImomKqNJnkIF4dG9kOXVb1v88OIbRb8yHWPXf3PHe+85tpm8M3c6V/PyM/8Cf3nhOZQ9tS5jrwluOFZw5NF2IsMKNiylEGr4y/NELgBxzDHBXAT4ZoTBlJlH08LOP/PMtYAdfQaNBo9Rp2w7YMJycy5zCikEuOiGUE+Ybg+AGKiL0AHdGcENMyUZJhioUKkYyvMLz6lBSquK32ERKhnXCRRArRAC2cFJOEA3XZksk7dIAQ4pxjWefwOMUHSP4xFQcoyFZQjOgEHhmTVUhcMX5BFnNQeclE2+E6jLzFGfRpxdnvDNpXPbvf7XdbnY7dvtIiQKWicUHEHO+luhkVeJ3KjNxcp4CSm+vm8diwpDCELAiMns0to/JyizJMiqFxMeYYkYvvRokK/AeGRqu9//1sqmSdpjk0Ya12nM/MVVKOvwj8pbeMQmPqz13vsQ5aqpGpgIjnDtp/U/C2zJpAig6Y8ajYw9eroXrBO1odwAPOfkEsj5o1TSlut+6u7ler9VPvbjq4bf946PV7y4d1ezGp43yus47zOCJauKrtJGGcydWuBEimH5yiGRZCQtZ01HYQtmueO0qRCPeqgS2GRG9UNUwN55sjpzhhOEmAVgamKajhB8AzLMrulUNqh/ASLB22P+0FFqdFqUqs4bKmT2DGkrKScokuz98H13mROq2uPej0B51ut2+39O1QEBLT3RwOQFRMV0Hik/ZMr/p07j8Zi/FyfOst1NTPQxcpe53RiANUvYh8swCan+Zd3ugWqbeqfC4QkPXTqSyflnN6t0ytZL+//xVAgAEAUEsBAjMAFAAACAgAc1g7V7uK5lNyAgAAXgQAAAsAAAAAAAAAAAAAAAAAAAAAAEpzb25TdG9yYWdlUEsFBgAAAAABAAEAOQAAAJsCAAAAAA==</Data>
   <RequiresApproval>false</RequiresApproval>
   <OverridingImport>false</OverridingImport>
   <ModuleName>Decisions.TruCap</ModuleName>
   <ImportOrder>104</ImportOrder>
-  <ModifiedOn>2023-09-05T10:38:22.43044</ModifiedOn>
+  <ModifiedOn>2023-09-27T10:46:08.344601</ModifiedOn>
   <BehaviorTypeName>DecisionsFramework.Design.DesignerProjectFolder</BehaviorTypeName>
+  <AllTagsData />
   <TagData />
 </ExportDescription>
