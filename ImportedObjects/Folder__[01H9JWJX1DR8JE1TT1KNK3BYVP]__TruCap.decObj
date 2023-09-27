@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ExportDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>TruCap</Name>
+  <Name>TruCap+</Name>
   <ParentFolderId>SERVICE CATALOG FOLDER</ParentFolderId>
-  <ParentFolderPath>System/Applications/Workflow Catalog</ParentFolderPath>
+  <ParentFolderPath>Applications/System/Workflow Catalog</ParentFolderPath>
   <TypeName>DecisionsFramework.ServiceLayer.Services.Folder.Folder</TypeName>
   <ShortTypeName>Folder</ShortTypeName>
   <Id>01H9JWJX1DR8JE1TT1KNK3BYVP</Id>
   <ExportedBy>admin@decisions.com</ExportedBy>
-  <ExportedOn>2023-09-05T10:58:45.3863997-04:00</ExportedOn>
-  <PlatformVersion>8.15.0.72385</PlatformVersion>
+  <ExportedOn>2023-09-27T10:38:48.7409608-04:00</ExportedOn>
+  <PlatformVersion>8.15.0.72435</PlatformVersion>
   <DependsOn />
   <DependsOnAssemblies />
   <StructureImport>false</StructureImport>
   <DependsOnStructures>false</DependsOnStructures>
-  <Size>663</Size>
-  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAVlclV/BHAVoUAgAAFgQAAAsAAABKc29uU3RvcmFnZZRS246iQBD9FcIzQdB11UlMVgF3vEKUOOvTpoVy6EzTTZpGYyb++3ZLgzt7S/ZFrFOnqs6prnfTMZ/ezb36+R6HUThdBF5sPjmWDA9RsJmsA/PJ9CHBJWa0nHGUw4XxN3sH/IwTWKEr8CYo7RkjqYzrj2X8XmcZe+AKGg9tt287tmMZXkVExWFMoRIcEcuIqiPByRKuMXsDOqYVIaZlnu5N577U47jPo8XL4pvrb4eLwI1jd7lZ9qaHfdTyppChM2Y8vhbwPw70Hw8JRNjrL+HsQ2s5q8zYZU5jDmqGUEB1XAOtWoqafELSoMwliE5hy5iQ6KkVqgRupCYJ1u3bTMhVJN1KBNMMOBYR8ByXdyN6IIVSYPq6gjMQCX1S1XJfERKZDHfXUkDemRSFXCgSqq7zIs2fCLsY2lQn5pWHCjWkrPlah3YESSUnX2twnqquh10crI1ZuPKDbV33gaT9ZajcVccaKjWWZJikHOgzOkNTpFOIXj2d9dmGiT9QVMdCvuQJQ7rHcGlgnKZAmzZpjiku5SUJxhUppKSpByoeTtQh7YLtfu4FhjeJJ6vw68NSzdTv0i4o4YAEpCH15UcmPveG3VHfGXTd/sgdjAaDniTlLL0L/Atn2H00miphd8Ff0uZA7YTlP3X5BwVxuc0zpI1xHeq56mp8ICBago5C2txUGaRYeKyo13OzTPW6zu32QwABBgBQSwECMwAUAAAICABWVyVX8EcBWhQCAAAWBAAACwAAAAAAAAAAAAAAAAAAAAAASnNvblN0b3JhZ2VQSwUGAAAAAAEAAQA5AAAAPQIAAAAA</Data>
+  <Size>763</Size>
+  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgA2FQ7V04gAFF4AgAAlwQAAAsAAABKc29uU3RvcmFnZZRT72/aMBD9V6J86YcxmvBjFFaqQRI2KCUIIrpKlSaTHI1Vx0a2A8uq/u87hwBqN03alyT37t3dc+75xXbs3ou9Mo8fUTgPh5PAi+yeU8PwYR7MBneB3bN9iKmigquRJBnshXyuL0HuaAxTUoA8Bqo+EizB+PCqWX/W1awVSAP1r+puu+7UnZrl5UznEvocci0Jq1nzfM1ofAtFJJ6B93nOmF2zSZJRThVStJArCvuQswLFbUyOsYg8KZ9ogogBeOGllCUSuC9mQn8jO1hCnEuqTzUyTukOknch9gCEHIRiwoewEEJXlLjq+JdmsQSsS4YmLoV+SY5nr8ciOzNCXg341LxqdNtOp+G2u26n2+mYicA19vRBxZJuNVYj8TrVGbu5ToEkN9eXh9daJIWldMGg/2hvBNcfNySjrOhZFwNJCbv4bJWoor+gZ7mN7c9HG4tNmelhGp6mHZY19nHUMlisxl5geYNoMA2/WqNw6geLE3OGS0RWJHOPbD8gvClLh5CSHRUyKrbwP2apPjxcGhNP78LRm9anWaVMx/3WndxPvrv+4moSuFHk3s5um8OH1fzECyU+qjUeEKOuOsCht8mgs+ZEp4gNtlv0HDH/XF0uC6Uhu7xH7Rsm9lal6fJ88pSo5RYPuqGQGC9WNjBwvj70V0eMJgnwKqA8BbTNHGRGVfmXMKFNQgUJ1Z7YHh1F1dFildwTXIp7A2YiKZX8w35Hytl9TbfldFqtrtNsu41GFzkclKb8aQo7YMhpIaTeaBiby7J8WEbB3dkbKhX7MY8kQHUUla/vgOen3RlLbAhecsz5wECf7lwVhbzc1GvNNgOc19ffAgwAUEsBAjMAFAAACAgA2FQ7V04gAFF4AgAAlwQAAAsAAAAAAAAAAAAAAAAAAAAAAEpzb25TdG9yYWdlUEsFBgAAAAABAAEAOQAAAKECAAAAAA==</Data>
   <RequiresApproval>false</RequiresApproval>
   <OverridingImport>false</OverridingImport>
   <ModuleName>Decisions.TruCap</ModuleName>
   <ImportOrder>104</ImportOrder>
-  <ModifiedOn>2023-09-05T10:40:15.9179782-04:00</ModifiedOn>
+  <ModifiedOn>2023-09-27T10:30:49.0351229-04:00</ModifiedOn>
   <BehaviorTypeName>DecisionsFramework.ServiceLayer.Services.ServiceCatalog.ServiceCatalogFolderBehavior</BehaviorTypeName>
+  <AllTagsData />
   <TagData />
 </ExportDescription>

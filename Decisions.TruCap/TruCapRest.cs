@@ -22,7 +22,7 @@ public class TruCapRest
         {
             if (ex.Message.Contains("timed out"))
             {
-                throw new Exception("TruCap took too long to respond and has timed out.", ex);
+                throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
             }
 
             throw;
@@ -48,7 +48,7 @@ public class TruCapRest
         {
             if (ex.Message.Contains("timed out"))
             {
-                throw new Exception("TruCap took too long to respond and has timed out.", ex);
+                throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
             }
 
             throw;

@@ -8,7 +8,7 @@ using DecisionsFramework.ServiceLayer;
 
 namespace Decisions.TruCap.Steps
 {
-    [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Ontology")]
+    [AutoRegisterMethodsOnClass(true, "Integration/TruCap+/Ontology")]
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class OntologySteps
     {

@@ -8,7 +8,7 @@ using DecisionsFramework.ServiceLayer;
 
 namespace Decisions.TruCap.Steps
 {
-    [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Document Monitor")]
+    [AutoRegisterMethodsOnClass(true, "Integration/TruCap+/Document Monitor")]
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class DocumentMonitorSteps
     {

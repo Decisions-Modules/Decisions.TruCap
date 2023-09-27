@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace Decisions.TruCap.Steps
 {
-    [AutoRegisterMethodsOnClass(true, "Integration/TruCap/Document")]
+    [AutoRegisterMethodsOnClass(true, "Integration/TruCap+/Document")]
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class DocumentSteps
     {
@@ -55,7 +55,7 @@ namespace Decisions.TruCap.Steps
             {
                 if (ex.Message.Contains("timed out"))
                 {
-                    throw new Exception("TruCap took too long to respond and has timed out.", ex);
+                    throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
                 throw;
@@ -258,7 +258,7 @@ namespace Decisions.TruCap.Steps
             {
                 if (ex.Message.Contains("timed out"))
                 {
-                    throw new Exception("TruCap took too long to respond and has timed out.", ex);
+                    throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
                 throw;

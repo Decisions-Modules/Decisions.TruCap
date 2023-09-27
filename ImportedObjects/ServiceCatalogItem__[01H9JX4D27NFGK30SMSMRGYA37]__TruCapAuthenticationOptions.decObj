@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ExportDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>TruCap Authentication Options</Name>
+  <Name>TruCap+ Authentication Options</Name>
   <ParentFolderId>01H9JWJX1DR8JE1TT1KNK3BYVP</ParentFolderId>
-  <ParentFolderPath>System/Applications/Workflow Catalog/TruCap</ParentFolderPath>
+  <ParentFolderPath>Applications/System/Workflow Catalog/TruCap+</ParentFolderPath>
   <TypeName>DecisionsFramework.ServiceLayer.Services.ServiceCatalog.ServiceCatalogItem</TypeName>
   <ShortTypeName>Service Catalog Item</ShortTypeName>
   <Id>01H9JX4D27NFGK30SMSMRGYA37</Id>
   <ExportedBy>admin@decisions.com</ExportedBy>
-  <ExportedOn>2023-09-05T10:58:45.5838551-04:00</ExportedOn>
-  <PlatformVersion>8.15.0.72385</PlatformVersion>
+  <ExportedOn>2023-09-27T10:38:48.6440324-04:00</ExportedOn>
+  <PlatformVersion>8.15.0.72435</PlatformVersion>
   <DependsOn />
   <DependsOnAssemblies />
   <StructureImport>false</StructureImport>
   <DependsOnStructures>false</DependsOnStructures>
-  <Size>996</Size>
-  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAVlclV+UpyM4TAQAASAEAAAEAAAAx8yrOzwsuyS9KTE8N8GZmEWFg4OBgcAlTDZepfbX0KAMDgwgjAwM3kEZSWNJ/luuQgUBL/NI3li0VAl4L2W8vC3vtf3RRxaSIcM1eziW9SpfKzW0rAvfo/H57xuANtwSL/g3exxHruktNnhdyMirz8bPG+06TYfLYsOp21Goz00dt/LlSu1yL12vHdKjP4t8yX1Vs7oRfv1o38+XPDEjvXLZ05ZX+/UYf66Q7txdblnPVWkkFu0l+TNK2zjYIybBWVvnIVT2pdOrjzVd4VwVEajYeOFp69tw7frNTf648D6w5ceyk0cmaee/Nf/80SbogLKGz5v19Jh6GAG9GJmMG3P5FBSjBxMoGEmIEQksg/Q6sAABQSwMEFAAACAgAVlclV/rhGAsAAgAAbgMAAAsAAABKc29uU3RvcmFnZXySUY+iMBSF/wrhmTUwOAomJqugM+oqZmTd8WmD9ArdKS1pYWaM8b/vLYq7M5vsC3DPPfSefu3JtM3Bydzqx884Wkfj+SSIzYFtYblbT1aj5cQcmCGkVFHB1VQmBbwJ+dLZgHylKXxLjiDbQrUfQVIlTGSfylkFhWX8u5ZlbEFqaeh1nPuO3bEtI6hZVUsYcqgrmTDLWNd7RtMFHGPxAnzIa8ZMy0xIQTlVaKmE3FJ4izg7YuCD7jEWJ5kKcTgqWpBpTl+BtP1riQZAyUYpTfhTzaPDgVEOVxtqmzrLQFWx+K5A3uTbniJJGrlZIU9kBktBgKGyEoFQlZYl4BQy1tmazF9Ji6GTiuKPI+LXOD3Xu/Pv7X7f813PddxeF03AK1odp4LhwFmoRzqP/vzH/NkJn7z5xIljZ7FauOPddn1zr5AyOmNZB0lpjOoq1zrGx+FGVOqX0ub3EtJK0ziqGGMXJYMmyBcHu3nCCQN5YXkyZ6S5ImPKE3ncIHoMvv+F/+uGc0Y/JQT4FRVVmsKolOKdFpfdXeQJoVUgyvbACkHogf6XUmv5BMmz/V7Xd+2uj55S3xSVT4UsHjX9gTlSISiacTx6y1Qf7+SN4nM3vOuvpg8L194sN8unh93I7f/lvyylz1jlAu/ZUuwpa/cSgqZFPlYRb35AHA2v8/m3AAMAUEsBAjMAFAAACAgAVlclV+UpyM4TAQAASAEAAAEAAAAAAAAAAAAAAAAAAAAAADFQSwECMwAUAAAICABWVyVX+uEYCwACAABuAwAACwAAAAAAAAAAAAAAAAAyAQAASnNvblN0b3JhZ2VQSwUGAAAAAAIAAgBoAAAAWwMAAAAA</Data>
+  <Size>1002</Size>
+  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgA2FQ7V/dABAYTAQAASAEAAAEAAAAx8yrOzwsuyS9KTE8N8GZmEWFg4OBgCAixDpepfbX0KAMDgwgjAwM3kEZSWNJ/luuQgUBL/NI3li0VAl4L2W8vC3vtf3RRxaSIcM1eziW9SpfKzW0rAvfo/H57xuANtwSL/g3exxHruktNnhdyMirz8bPG+06TYfLYsOp21Goz00dt/LlSu1yL12vHdKjP4t8yX1Vs7oRfv1o38+XPDEjvXLZ05ZX+/UYf66Q7txdblnPVWkkFu0l+TNK2zjYIybBWVvnIVT2pdOrjzVd4VwVEajYeOFp69tw7frNTf648D6w5ceyk0cmaee/Nf/80SbogLKGz5v19Jh6GAG9GJmMG3P5FBSjBxMoGEmIEQksg/Q6sAABQSwMEFAAACAgA2FQ7V0tudPIGAgAAbwMAAAsAAABKc29uU3RvcmFnZXxSYW/aMBD9K1G+LkNJQwkgIQ0ItIVBEGSsfJpMfCRuHTuynbZRxX+fHRLabdK+JL7z+d177+7ddu3hu703n19xtIkmi9k0toeuo8PDZrYer2b20A4hIZJwJucC5fDKxXNnB+KFJPAdVSDaQLaHKVKI8vSv8EFB7lj/YjnWHoRJjfod77bjdlzHmpZUlQJGDEolEHWsTXmkJFlCFfNnYCNWUmo7doLYrkxTkCrmPyQIzfWk0xlimIIIdV+j7AHXiiaEIVHtFBeAo+MTJMpceGcDcyUYCVzDuBpGZvw1Yit+JBQaZN1wW7LodKKEtbnCUJPZnIv8nkuls2MZgiQpA2xQ/jQhNODe/WDx2A1vgvX8bum7u9Vutb07jP3gU/0FyvAg0gTjQvA3kiN15ZIhkcKKY6A6s+b1C8eGt0JLAxyiSsY6mRcU6jdfPWMNwRhYg4BwThiR2mFtyp6AVkur5g6YIqqac6r9+CD9c/Hohdv+YubFsbdcL/3JYb+5Vq/1RHVlLMopKr5Y41Jl5kLbq6drRYX5ScNcgJaBIxZe1PT8/s3g1g2C/sDv+57fM6pzjsmJGB1tje913aAX+F7QHXS77gfQxJCuxXzD7Xp1Ep5/QvlPCRJJRl70rBpTmrDpa9ogSmOUyss+2ToRgvG0fdFEEbvOa4aJmvLi4qVesHoDz+ffAgwAUEsBAjMAFAAACAgA2FQ7V/dABAYTAQAASAEAAAEAAAAAAAAAAAAAAAAAAAAAADFQSwECMwAUAAAICADYVDtXS2508gYCAABvAwAACwAAAAAAAAAAAAAAAAAyAQAASnNvblN0b3JhZ2VQSwUGAAAAAAIAAgBoAAAAYQMAAAAA</Data>
   <RequiresApproval>false</RequiresApproval>
   <OverridingImport>false</OverridingImport>
   <ModuleName>Decisions.TruCap</ModuleName>
   <ImportOrder>400</ImportOrder>
-  <ModifiedOn>2023-09-05T10:50:09.6493049-04:00</ModifiedOn>
+  <ModifiedOn>2023-09-27T10:34:33.174944-04:00</ModifiedOn>
   <AllTagsData />
   <TagData />
 </ExportDescription>
