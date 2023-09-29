@@ -13,7 +13,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class AuthSteps
     {
-        public async Task<LoginResponse> Login(
+        public LoginResponse Login(
             [PropertyClassification(0, "Username", "Credentials")]string username,
             [PropertyClassification(1, "Password", "Credentials")]string password,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
@@ -38,10 +38,10 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                HttpResponseMessage response = await client.SendAsync(request);
+                HttpResponseMessage response = client.Send(request);
                 response.EnsureSuccessStatusCode();
 
-                return LoginResponse.JsonDeserialize(await response.Content.ReadAsStringAsync());
+                return LoginResponse.JsonDeserialize(response.Content.ToString());
             }
             catch (Exception ex)
             {

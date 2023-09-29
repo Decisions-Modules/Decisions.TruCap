@@ -12,7 +12,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class DocumentMonitorSteps
     {
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
             string startDate, string endDate, string project, string docSubType,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
@@ -33,15 +33,15 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                return DocumentMonitorResponse.JsonDeserialize(response.Result.Content.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new Exception(response.Result.Content.ToString());
             }
         }
 
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (documentId == null)
@@ -54,15 +54,15 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                return DocumentMonitorResponse.JsonDeserialize(response.Result.Content.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new Exception(response.Result.Content.ToString());
             }
         }
 
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
@@ -70,15 +70,15 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                return DocumentMonitorResponse.JsonDeserialize(response.Result.Content.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new Exception(response.Result.Content.ToString());
             }
         }
 
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (string.IsNullOrEmpty(documentName))
@@ -91,11 +91,11 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                return DocumentMonitorResponse.JsonDeserialize(response.Result.Content.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new Exception(response.Result.Content.ToString());
             }
         }
     }

@@ -12,16 +12,16 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class OntologySteps
     {
-        public async Task<OntologyResponse[]> GetOntologyList(TruCapAuthentication authentication,
+        public OntologyResponse[] GetOntologyList(TruCapAuthentication authentication,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet(baseUrl, authentication);
 
-            return OntologyResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            return OntologyResponse.JsonDeserialize(response.Result.Content.ToString());
         }
 
-        public async Task<OntologyDetailsResponse> GetOntologyDetails(TruCapAuthentication authentication, string project, string docSubType,
+        public OntologyDetailsResponse GetOntologyDetails(TruCapAuthentication authentication, string project, string docSubType,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (string.IsNullOrEmpty(project))
@@ -37,7 +37,7 @@ namespace Decisions.TruCap.Steps
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
             Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 
-            return OntologyDetailsResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+            return OntologyDetailsResponse.JsonDeserialize(response.Result.Content.ToString());
         }
     }
 }
