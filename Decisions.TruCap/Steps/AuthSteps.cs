@@ -41,7 +41,7 @@ namespace Decisions.TruCap.Steps
                 HttpResponseMessage response = client.Send(request);
                 response.EnsureSuccessStatusCode();
 
-                return LoginResponse.JsonDeserialize(response.Content.ToString());
+                return LoginResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
@@ -58,10 +58,10 @@ namespace Decisions.TruCap.Steps
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
+            HttpResponseMessage response = TruCapRest.TruCapGet(
                 $"{baseUrl}/login/status?sid={authentication.sid}&token={authentication.token}", authentication);
 
-            return response.Result.IsSuccessStatusCode;
+            return response.IsSuccessStatusCode;
         }
 
         public string? Logout(TruCapAuthentication authentication,

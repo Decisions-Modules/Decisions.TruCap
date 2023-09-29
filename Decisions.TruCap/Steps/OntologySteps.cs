@@ -16,9 +16,9 @@ namespace Decisions.TruCap.Steps
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(baseUrl, authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet(baseUrl, authentication);
 
-            return OntologyResponse.JsonDeserialize(response.Result.Content.ToString());
+            return OntologyResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
         }
 
         public OntologyDetailsResponse GetOntologyDetails(TruCapAuthentication authentication, string project, string docSubType,
@@ -35,9 +35,9 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 
-            return OntologyDetailsResponse.JsonDeserialize(response.Result.Content.ToString());
+            return OntologyDetailsResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
         }
     }
 }

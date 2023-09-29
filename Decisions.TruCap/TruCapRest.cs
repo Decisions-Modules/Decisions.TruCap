@@ -4,7 +4,7 @@ namespace Decisions.TruCap;
 
 public class TruCapRest
 {
-    public static async Task<HttpResponseMessage> TruCapGet(string url, TruCapAuthentication authentication)
+    public static HttpResponseMessage TruCapGet(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
         
@@ -14,7 +14,7 @@ public class TruCapRest
         
         try
         {
-            HttpResponseMessage response = await client.SendAsync(request);
+            HttpResponseMessage response = client.Send(request);
 
             return response;
         }

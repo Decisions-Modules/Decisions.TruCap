@@ -71,15 +71,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{documentId}", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/{documentId}", authentication);
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -92,15 +92,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}", authentication);
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -113,15 +113,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/label/{label}", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/label/{label}", authentication);
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -134,15 +134,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}", authentication);
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -155,15 +155,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/{documentId}/status", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/{documentId}/status", authentication);
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -177,15 +177,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}/status", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}/status", authentication);
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -198,15 +198,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/label/{label}/status", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/label/{label}/status", authentication);
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -219,15 +219,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}/status", authentication);
+            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}/status", authentication);
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Result.Content.ToString());
+                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception ex)
             {
-                throw new Exception(response.Result.Content.ToString());
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
         }
     }
