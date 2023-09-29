@@ -33,7 +33,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -54,7 +56,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -70,7 +74,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -91,7 +97,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {

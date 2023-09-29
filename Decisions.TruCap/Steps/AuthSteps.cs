@@ -41,7 +41,9 @@ namespace Decisions.TruCap.Steps
                 HttpResponseMessage response = client.Send(request);
                 response.EnsureSuccessStatusCode();
 
-                return LoginResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return LoginResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {

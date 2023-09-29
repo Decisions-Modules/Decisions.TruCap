@@ -47,9 +47,10 @@ namespace Decisions.TruCap.Steps
             {
                 HttpResponseMessage response = client.Send(request);
                 response.EnsureSuccessStatusCode();
-                Console.WriteLine(response.Content.ReadAsStringAsync());
 
-                return DocumentDataResponse.JsonDeserialize(response.Content.ToString());
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -75,7 +76,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -96,7 +99,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -117,7 +122,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -138,7 +145,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentDataResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -159,7 +168,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -181,7 +192,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -202,7 +215,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
@@ -223,7 +238,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                return DocumentStatusResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {

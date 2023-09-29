@@ -18,7 +18,16 @@ namespace Decisions.TruCap.Steps
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
             HttpResponseMessage response = TruCapRest.TruCapGet(baseUrl, authentication);
 
-            return OntologyResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+            try
+            {
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return OntologyResponse.JsonDeserialize(resultTask.Result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
+            }
         }
 
         public OntologyDetailsResponse GetOntologyDetails(TruCapAuthentication authentication, string project, string docSubType,
@@ -37,7 +46,16 @@ namespace Decisions.TruCap.Steps
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
             HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 
-            return OntologyDetailsResponse.JsonDeserialize(response.Content.ReadAsStringAsync().Result);
+            try
+            {
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                return OntologyDetailsResponse.JsonDeserialize(resultTask.Result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
+            }
         }
     }
 }
