@@ -21,11 +21,6 @@ public class TruCapRest
         }
         catch (Exception ex)
         {
-            if (ex.Message.Contains("timed out"))
-            {
-                throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
-            }
-
             throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
         }
     }
@@ -47,11 +42,6 @@ public class TruCapRest
         }
         catch (Exception ex)
         {
-            if (ex.Message.Contains("timed out"))
-            {
-                throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
-            }
-
             throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
         }
     }
