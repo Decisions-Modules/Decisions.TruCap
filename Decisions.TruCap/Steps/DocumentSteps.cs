@@ -105,7 +105,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
 
@@ -128,7 +128,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
 
@@ -151,7 +151,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
 
@@ -174,7 +174,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
 
@@ -198,7 +198,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
 
@@ -221,7 +221,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
 
@@ -244,7 +244,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
     }
