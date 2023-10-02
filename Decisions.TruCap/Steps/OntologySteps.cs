@@ -26,7 +26,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
     }

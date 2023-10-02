@@ -59,7 +59,7 @@ namespace Decisions.TruCap.Steps
                     throw new BusinessRuleException("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
-                throw;
+                throw new BusinessRuleException(String.Empty, ex);
             }
         }
         
@@ -82,7 +82,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -105,7 +105,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -128,7 +128,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -151,7 +151,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -174,7 +174,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -198,7 +198,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -221,7 +221,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
 
@@ -244,7 +244,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
             }
         }
     }
