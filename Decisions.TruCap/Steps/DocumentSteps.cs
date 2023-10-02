@@ -77,7 +77,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result, ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
