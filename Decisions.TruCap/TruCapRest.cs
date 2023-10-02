@@ -5,7 +5,7 @@ namespace Decisions.TruCap;
 
 public class TruCapRest
 {
-    public static HttpResponseMessage TruCapGet(string url, TruCapAuthentication authentication)
+    public static Task<string> TruCapGet(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
         
@@ -16,8 +16,12 @@ public class TruCapRest
         try
         {
             HttpResponseMessage response = client.Send(request);
+            response.EnsureSuccessStatusCode();
 
-            return response;
+            Task<string> resultTask = response.Content.ReadAsStringAsync();
+            resultTask.Wait();
+
+            return resultTask;
         }
         catch (Exception ex)
         {
@@ -25,7 +29,7 @@ public class TruCapRest
         }
     }
 
-    public static async Task<HttpResponseMessage> TruCapDelete(string url, TruCapAuthentication authentication)
+    public static Task<string> TruCapDelete(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
 
@@ -35,10 +39,13 @@ public class TruCapRest
 
         try
         {
-            HttpResponseMessage response = await client.SendAsync(request);
+            HttpResponseMessage response = client.Send(request);
             response.EnsureSuccessStatusCode();
             
-            return response;
+            Task<string> resultTask = response.Content.ReadAsStringAsync();
+            resultTask.Wait();
+            
+            return resultTask;
         }
         catch (Exception ex)
         {

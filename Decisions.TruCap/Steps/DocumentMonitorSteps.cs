@@ -27,19 +27,17 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            HttpResponseMessage response = TruCapRest.TruCapGet(
+            Task<string> resultTask = TruCapRest.TruCapGet(
                 $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/{startDate}/ToDate/{endDate}",
                 authentication);
 
             try
             {
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+                throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
         }
 
@@ -52,17 +50,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
+            Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
 
             try
             {
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+                throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
         }
 
@@ -70,17 +66,15 @@ namespace Decisions.TruCap.Steps
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
+            Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
 
             try
             {
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+                throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
         }
 
@@ -93,17 +87,15 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            HttpResponseMessage response = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
+            Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
 
             try
             {
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+                throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
         }
     }
