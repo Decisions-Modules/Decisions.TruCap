@@ -48,11 +48,6 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                if (ex.Message.Contains("timed out"))
-                {
-                    throw new BusinessRuleException("TruCap+ took too long to respond and has timed out.", ex);
-                }
-
                 throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
