@@ -52,11 +52,11 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
                 if (ex.Message.Contains("timed out"))
                 {
-                    throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
+                    throw new BusinessRuleException("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
                 throw;
@@ -80,9 +80,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -103,9 +103,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -126,9 +126,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -149,9 +149,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentDataResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -172,9 +172,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -196,9 +196,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -219,9 +219,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -242,9 +242,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
     }

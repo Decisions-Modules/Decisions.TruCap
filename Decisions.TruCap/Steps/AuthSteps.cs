@@ -1,6 +1,7 @@
 using System.Text;
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
@@ -45,11 +46,11 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return LoginResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
                 if (ex.Message.Contains("timed out"))
                 {
-                    throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
+                    throw new BusinessRuleException("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
                 throw;

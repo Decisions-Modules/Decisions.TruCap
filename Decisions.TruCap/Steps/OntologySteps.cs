@@ -24,9 +24,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return OntologyResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
 
@@ -52,9 +52,9 @@ namespace Decisions.TruCap.Steps
                 resultTask.Wait();
                 return OntologyDetailsResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (Exception ex)
+            catch (BusinessRuleException ex)
             {
-                throw new Exception(response.Content.ReadAsStringAsync().Result);
+                throw new BusinessRuleException(response.Content.ReadAsStringAsync().Result);
             }
         }
     }
