@@ -30,8 +30,8 @@ namespace Decisions.TruCap.Api
 
         public static LoginResponse? JsonDeserialize(string json)
         {
-            LoginResponse? text = JsonConvert.DeserializeObject<LoginResponse>(json);
-            return text;
+            LoginResponse? data = JsonConvert.DeserializeObject<LoginResponse>(json);
+            return data;
         }
     }
 }

@@ -28,10 +28,10 @@ namespace Decisions.TruCap.Api
         [JsonProperty("receivedDate")]
         public string ReceivedDate { get; set; }
 
-        public static DocumentStatusResponse[] JsonDeserialize(string json)
+        public static DocumentStatusResponse[]? JsonDeserialize(string json)
         {
-            DocumentStatusResponse[] text = JsonConvert.DeserializeObject<DocumentStatusResponse[]>(json);
-            return text;
+            DocumentStatusResponse[]? data = JsonConvert.DeserializeObject<DocumentStatusResponse[]>(json);
+            return data;
         }
     }
 }

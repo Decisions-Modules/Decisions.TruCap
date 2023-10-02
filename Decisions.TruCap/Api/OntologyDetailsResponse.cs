@@ -68,8 +68,8 @@ namespace Decisions.TruCap.Api
         
         public static OntologyDetailsResponse? JsonDeserialize(string json)
         {
-            OntologyDetailsResponse? text = JsonConvert.DeserializeObject<OntologyDetailsResponse>(json);
-            return text;
+            OntologyDetailsResponse? data = JsonConvert.DeserializeObject<OntologyDetailsResponse>(json);
+            return data;
         }
     }
 

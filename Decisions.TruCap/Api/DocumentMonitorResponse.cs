@@ -66,8 +66,8 @@ namespace Decisions.TruCap.Api
         
         public static DocumentMonitorResponse[]? JsonDeserialize(string json)
         {
-            DocumentMonitorResponse[]? text = JsonConvert.DeserializeObject<DocumentMonitorResponse[]>(json);
-            return text;
+            DocumentMonitorResponse[]? data = JsonConvert.DeserializeObject<DocumentMonitorResponse[]>(json);
+            return data;
         }
     }
 }

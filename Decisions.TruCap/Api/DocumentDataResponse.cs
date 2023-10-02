@@ -206,8 +206,8 @@ namespace Decisions.TruCap.Api
         
         public static DocumentDataResponse? JsonDeserialize(string json)
         {
-            DocumentDataResponse? text = JsonConvert.DeserializeObject<DocumentDataResponse>(json);
-            return text;
+            DocumentDataResponse? data = JsonConvert.DeserializeObject<DocumentDataResponse>(json);
+            return data;
             
         }
     }
