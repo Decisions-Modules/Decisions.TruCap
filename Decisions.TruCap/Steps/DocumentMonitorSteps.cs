@@ -39,7 +39,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(String.Empty, ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
@@ -62,7 +62,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(String.Empty, ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(String.Empty, ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
@@ -103,7 +103,7 @@ namespace Decisions.TruCap.Steps
             }
             catch (BusinessRuleException ex)
             {
-                throw new BusinessRuleException(String.Empty, ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
     }

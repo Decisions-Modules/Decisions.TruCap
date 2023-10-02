@@ -1,4 +1,5 @@
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 
 namespace Decisions.TruCap;
 
@@ -25,7 +26,7 @@ public class TruCapRest
                 throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
             }
 
-            throw;
+            throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
         }
     }
 
@@ -51,7 +52,7 @@ public class TruCapRest
                 throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
             }
 
-            throw;
+            throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
         }
     }
 }

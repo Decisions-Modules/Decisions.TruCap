@@ -53,7 +53,7 @@ namespace Decisions.TruCap.Steps
                     throw new BusinessRuleException("TruCap+ took too long to respond and has timed out.", ex);
                 }
 
-                throw;
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
