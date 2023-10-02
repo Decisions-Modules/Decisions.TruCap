@@ -35,7 +35,7 @@ namespace Decisions.TruCap.Steps
             {
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
@@ -56,7 +56,7 @@ namespace Decisions.TruCap.Steps
             {
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
@@ -72,7 +72,7 @@ namespace Decisions.TruCap.Steps
             {
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
@@ -93,7 +93,7 @@ namespace Decisions.TruCap.Steps
             {
                 return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }

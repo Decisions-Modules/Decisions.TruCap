@@ -22,7 +22,7 @@ namespace Decisions.TruCap.Steps
             {
                 return OntologyResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }
@@ -48,7 +48,7 @@ namespace Decisions.TruCap.Steps
             {
                 return OntologyDetailsResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
             }

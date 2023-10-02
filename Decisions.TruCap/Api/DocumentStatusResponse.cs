@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -31,15 +30,8 @@ namespace Decisions.TruCap.Api
 
         public static DocumentStatusResponse[] JsonDeserialize(string json)
         {
-            try
-            {
-                DocumentStatusResponse[] text = JsonConvert.DeserializeObject<DocumentStatusResponse[]>(json);
-                return text;
-            }
-            catch (Exception e)
-            {
-                throw new BusinessRuleException(e.Message);
-            }
+            DocumentStatusResponse[] text = JsonConvert.DeserializeObject<DocumentStatusResponse[]>(json);
+            return text;
         }
     }
 }

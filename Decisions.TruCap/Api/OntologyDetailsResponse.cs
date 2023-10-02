@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -69,15 +68,8 @@ namespace Decisions.TruCap.Api
         
         public static OntologyDetailsResponse? JsonDeserialize(string json)
         {
-            try
-            {
-                OntologyDetailsResponse? text = JsonConvert.DeserializeObject<OntologyDetailsResponse>(json);
-                return text;
-            }
-            catch (Exception e)
-            {
-                throw new BusinessRuleException(e.Message);
-            }
+            OntologyDetailsResponse? text = JsonConvert.DeserializeObject<OntologyDetailsResponse>(json);
+            return text;
         }
     }
 

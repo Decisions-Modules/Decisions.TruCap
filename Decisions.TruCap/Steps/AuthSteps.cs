@@ -36,17 +36,18 @@ namespace Decisions.TruCap.Steps
 
             // Set the Authorization header
             request.Headers.Add("Authorization", $"Basic {base64Credentials}");
+            
+            HttpResponseMessage response = client.Send(request);
+            response.EnsureSuccessStatusCode();
+
+            Task<string> resultTask = response.Content.ReadAsStringAsync();
+            resultTask.Wait();
 
             try
             {
-                HttpResponseMessage response = client.Send(request);
-                response.EnsureSuccessStatusCode();
-
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
                 return LoginResponse.JsonDeserialize(resultTask.Result);
             }
-            catch (BusinessRuleException ex)
+            catch (Exception ex)
             {
                 throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
@@ -63,23 +64,15 @@ namespace Decisions.TruCap.Steps
             request.Headers.Add("sid", authentication.sid);
             request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
-            try
-            {
-                HttpResponseMessage response = client.Send(request);
-                response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = client.Send(request);
 
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
+            Task<string> resultTask = response.Content.ReadAsStringAsync();
+            resultTask.Wait();
 
-                return response.IsSuccessStatusCode;
-            }
-            catch (Exception ex)
-            {
-                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
-            }
+            return response.IsSuccessStatusCode;
         }
 
-        public string? Logout(TruCapAuthentication authentication,
+        public bool Logout(TruCapAuthentication authentication,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
@@ -89,25 +82,12 @@ namespace Decisions.TruCap.Steps
             request.Headers.Add("sid", authentication.sid);
             request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
-            try
-            {
-                HttpResponseMessage response = client.Send(request);
-                response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = client.Send(request);
 
-                Task<string> resultTask = response.Content.ReadAsStringAsync();
-                resultTask.Wait();
+            Task<string> resultTask = response.Content.ReadAsStringAsync();
+            resultTask.Wait();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return "Logout successful.";
-                }
-
-                return "Could not logout.";
-            }
-            catch (Exception ex)
-            {
-                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
-            }
+            return response.IsSuccessStatusCode;
         }
     }
 }
