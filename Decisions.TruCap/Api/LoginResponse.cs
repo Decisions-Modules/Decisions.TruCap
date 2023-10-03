@@ -14,24 +14,23 @@ namespace Decisions.TruCap.Api
 
         [WritableValue]
         [JsonProperty("token")]
-        public string Token { get; set; }
+        public string? Token { get; set; }
 
         [WritableValue]
         [JsonProperty("message")]
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
         [WritableValue]
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string? Sid { get; set; }
 
         [WritableValue]
         [JsonProperty("validationUrl")]
-        public string ValidationUrl { get; set; }
+        public string? ValidationUrl { get; set; }
 
-        public static LoginResponse? JsonDeserialize(string json)
+        public static LoginResponse JsonDeserialize(string json)
         {
-            LoginResponse? data = JsonConvert.DeserializeObject<LoginResponse>(json);
-            return data;
+            return JsonConvert.DeserializeObject<LoginResponse>(json) ?? new LoginResponse();
         }
     }
 }

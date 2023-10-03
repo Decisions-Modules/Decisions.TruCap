@@ -22,16 +22,15 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("statusName")]
-        public string StatusName { get; set; }
+        public string? StatusName { get; set; }
         
         [WritableValue]
         [JsonProperty("receivedDate")]
-        public string ReceivedDate { get; set; }
+        public string? ReceivedDate { get; set; }
 
-        public static DocumentStatusResponse[]? JsonDeserialize(string json)
+        public static DocumentStatusResponse[] JsonDeserialize(string json)
         {
-            DocumentStatusResponse[]? data = JsonConvert.DeserializeObject<DocumentStatusResponse[]>(json);
-            return data;
+            return JsonConvert.DeserializeObject<DocumentStatusResponse[]>(json) ?? new DocumentStatusResponse[]{};
         }
     }
 }

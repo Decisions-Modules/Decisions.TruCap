@@ -7,19 +7,19 @@
   <ShortTypeName>Folder</ShortTypeName>
   <Id>01H9JWJX1DR8JE1TT1KNK3BYVP</Id>
   <ExportedBy>admin@decisions.com</ExportedBy>
-  <ExportedOn>2023-09-27T11:03:39.2171923-04:00</ExportedOn>
-  <PlatformVersion>8.15.0.72435</PlatformVersion>
+  <ExportedOn>2023-10-03T10:52:07.7551545-04:00</ExportedOn>
+  <PlatformVersion>8.16.0.72503</PlatformVersion>
   <DependsOn />
   <DependsOnAssemblies />
   <StructureImport>false</StructureImport>
   <DependsOnStructures>false</DependsOnStructures>
-  <Size>758</Size>
-  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAc1g7V01HE7RzAgAAggQAAAsAAABKc29uU3RvcmFnZZRTXW/aMBT9K1Fe+jAKCZTysVIJkrBCKUEQ0VWqNJnkprHq2JHtwLKq/312CGHt9jIeEu6595577HvyZlrm8M3c6sePwF/5k7nnBObQaqjwaeUtxw+eOTRdCLHAjIopRykcGH9tboDvcQgLVAA/BaI5ZSRS8fHVMP7uaxhb4Boa9Zt2t2k1rYbh5ETmHEYUcskRaRirfEdweA9FwF6BjmhOiNkwUZRiioUqkYxvMRx8SgolLtY5QgL0IlwkkUI0QAsnwSTiQF22ZPIO7WEDYc6xrHt4mOA9RJ9CxQEKshQUIjqBNWOyKgkrxn+QhRxUXzTR8eZpE3gPZ9CnFed1p98edK1e2+4O7N6g19NDgEpF44IIOc6kuhlVeJPIlNzeJICi25vW8bVjUWEIWRAYPZsxo/IyRikmxdC4GHOMyMVXo0QF/gVDw25nP59N1azbNIcmrKcd9zNztVhvvZ05nuGMg/HC/2ZM/YXrrevKpdqbqgp47qDsi4LjsnUCCdpjxoMig//xR/XHUXsi7OVTOP1AXc8qZVr23WD+OP9uu+v+3LODwL5f3ncmT9tVXedz9ag2d0S0uuoAR26dUWZaIZkobJxlymZI37lobQohIW09Ku0xYQej0tQ6nzxBYpOpg8YYIm2/avMazndHfnHCcBQBrQJME1BOWQFPsShvSSWkTggvwtJh2clEWJxcVcmt4VLcBzBlUamkdNzl+fdH6uy6jn1l9TvX/Sur3b/u6guiICSmLwvYA1E1VwoSH2bPotrJZ0+IhB1mNOAA1RFEvnsAmtc701aIkfqeVc4FArL+vKrIp+WG3humHmC9v/8WQIABAFBLAQIzABQAAAgIAHNYO1dNRxO0cwIAAIIEAAALAAAAAAAAAAAAAAAAAAAAAABKc29uU3RvcmFnZVBLBQYAAAAAAQABADkAAACcAgAAAAA=</Data>
+  <Size>752</Size>
+  <Data>SnNvblN0b3JhZ2VQSwMEFAAACAgAg1ZDV08jD05tAgAAggQAAAsAAABKc29uU3RvcmFnZZRS227aQBD9FcsveSgBm0sINEQC2zQQghFYpJEiRQse4lWWXWt3DXWj/HtnsYGm7Ut5YD1n5py5vtuO3X23l+bvJQpn4WAceJHddSpoPs2Caf8hsLu2D2uqqOBqKMkW9kK+VRcgd3QNE5KDPBqqOhQsRrt4KtbfvIq1BGmg3nXVvao6VadieRnTmYQeh0xLwirWLFsxur6HPBJvwHs8Y8yu2JuD6MjHehz3rjN+HH93/fn1OHCjyL2f3jcGT8vZKW4ACdlRIaM8hf/poPzwiCZMvP5hDj9JYy6ViP2IRxJMDm2AbPUAPDuFmMwbgg2ib034AOZCaEQ3p0JNgVOsCcFC/uQJpbGwW0QoT0BSPQO5perQSJmQg9KUv05gBwyhpmHjvGZEJ2j20xQnSbQh1Ba50rCtPWLzGyb2VtlULZKZR9IvJosqYspCijIVrDNMnRfgKEZ48bSIggdrGE78YF7wPgWVzISoRbYqIFVi64SyWAK/Izs4kkoX4blXen0xFfofIUYxxVVuKMRLCvsjTOMY+FEm3lJOFZ6SFtIEhZwd+cD1uRNzSYtgvhx5geX1o/4k/HZuqYgsF3OeUAH7oNaSpmas6L1J9Jbd3iRA4tubWvGsRJxbSucMes+4Tq4vN2RLWd61LvqSEnbx1Tqgiv6EruXW0x/PNpINzWgYQTMsCURDHHIfH8x01biud1pOu+62Om67026b09iK+DCPc0zDbTqdTrPhtJpOveWchQb5aXm/EQ/o5flnZihxTzuIjyMtzTKFUSSMReRVIUIQQcAHBvrEKK2QH+9XBTHVnkiLTXxUbHNIzsfHLwEGAFBLAQIzABQAAAgIAINWQ1dPIw9ObQIAAIIEAAALAAAAAAAAAAAAAAAAAAAAAABKc29uU3RvcmFnZVBLBQYAAAAAAQABADkAAACWAgAAAAA=</Data>
   <RequiresApproval>false</RequiresApproval>
   <OverridingImport>false</OverridingImport>
   <ModuleName>Decisions.TruCap</ModuleName>
   <ImportOrder>104</ImportOrder>
-  <ModifiedOn>2023-09-27T10:46:08.402865</ModifiedOn>
+  <ModifiedOn>2023-09-27T11:12:23.054025</ModifiedOn>
   <BehaviorTypeName>DecisionsFramework.ServiceLayer.Services.ServiceCatalog.ServiceCatalogFolderBehavior</BehaviorTypeName>
   <AllTagsData />
   <TagData />

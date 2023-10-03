@@ -14,7 +14,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("documentCategoryName")]
-        public string DocumentCategoryName { get; set; }
+        public string? DocumentCategoryName { get; set; }
         
         [WritableValue]
         [JsonProperty("projectId")]
@@ -22,7 +22,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("projectName")]
-        public string ProjectName { get; set; }
+        public string? ProjectName { get; set; }
         
         [WritableValue]
         [JsonProperty("documentSubTypeId")]
@@ -30,12 +30,11 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("documentSubTypeName")]
-        public string DocumentSubTypeName { get; set; }
+        public string? DocumentSubTypeName { get; set; }
         
-        public static OntologyResponse[]? JsonDeserialize(string json)
+        public static OntologyResponse[] JsonDeserialize(string json)
         {
-            OntologyResponse[]? data = JsonConvert.DeserializeObject<OntologyResponse[]>(json);
-            return data;
+            return JsonConvert.DeserializeObject<OntologyResponse[]>(json) ?? new OntologyResponse[]{};
         }
     }
 }

@@ -14,63 +14,63 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("documentNo")]
-        public string DocumentNo { get; set; }
+        public string? DocumentNo { get; set; }
         
         [WritableValue]
         [JsonProperty("fileName")]
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
         
         [WritableValue]
         [JsonProperty("originalFileName")]
-        public string OriginalFileName { get; set; }
+        public string? OriginalFileName { get; set; }
         
         [WritableValue]
         [JsonProperty("originalFilePath")]
-        public string OriginalFilePath { get; set; }
+        public string? OriginalFilePath { get; set; }
         
         [WritableValue]
         [JsonProperty("originalFileBytes")]
-        public string OriginalFileBytes { get; set; }
+        public string? OriginalFileBytes { get; set; }
         
         [WritableValue]
         [JsonProperty("processedFilePath")]
-        public string ProcessedFilePath { get; set; }
+        public string? ProcessedFilePath { get; set; }
         
         [WritableValue]
         [JsonProperty("processedFileBytes")]
-        public string ProcessedFileBytes { get; set; }
+        public string? ProcessedFileBytes { get; set; }
         
         [WritableValue]
         [JsonProperty("parentDocumentId")]
-        public string ParentDocumentId { get; set; }
+        public string? ParentDocumentId { get; set; }
         
         [WritableValue]
         [JsonProperty("parentDocumentFilePath")]
-        public string ParentDocumentFilePath { get; set; }
+        public string? ParentDocumentFilePath { get; set; }
         
         [WritableValue]
         [JsonProperty("parentFileBytes")]
-        public string ParentFileBytes { get; set; }
+        public string? ParentFileBytes { get; set; }
         
         [WritableValue]
         [JsonProperty("documentStatus")]
-        public string DocumentStatus { get; set; }
+        public string? DocumentStatus { get; set; }
         
         [WritableValue]
         [JsonProperty("documentStatusReason")]
-        public string DocumentStatusReason { get; set; }
+        public string? DocumentStatusReason { get; set; }
         
         [WritableValue]
         [JsonProperty("fields")]
-        public List<Field> Fields { get; set; }
+        public List<Field>? Fields { get; set; }
         
         [WritableValue]
         [JsonProperty("tables")]
-        public List<Table> Tables { get; set; }
+        public List<Table>? Tables { get; set; }
         
         [WritableValue]
         [JsonProperty("emailMetaData")]
-        public EmailMetaData EmailMetaData { get; set; }
+        public EmailMetaData? EmailMetaData { get; set; }
     }
 
     [DataContract]
@@ -83,23 +83,23 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("documentSubTypeCode")]
-        public string DocumentSubTypeCode { get; set; }
+        public string? DocumentSubTypeCode { get; set; }
         
         [WritableValue]
         [JsonProperty("documentSubTypeName")]
-        public string DocumentSubTypeName { get; set; }
+        public string? DocumentSubTypeName { get; set; }
         
         [WritableValue]
         [JsonProperty("projectCode")]
-        public string ProjectCode { get; set; }
+        public string? ProjectCode { get; set; }
         
         [WritableValue]
         [JsonProperty("projectName")]
-        public string ProjectName { get; set; }
+        public string? ProjectName { get; set; }
         
         [WritableValue]
         [JsonProperty("documents")]
-        public List<Document> Documents { get; set; }
+        public List<Document>? Documents { get; set; }
     }
 
     [DataContract]
@@ -108,35 +108,35 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("sender")]
-        public object Sender { get; set; }
+        public object? Sender { get; set; }
         
         [WritableValue]
         [JsonProperty("to")]
-        public object To { get; set; }
+        public object? To { get; set; }
         
         [WritableValue]
         [JsonProperty("cc")]
-        public object Cc { get; set; }
+        public object? Cc { get; set; }
         
         [WritableValue]
         [JsonProperty("bcc")]
-        public object Bcc { get; set; }
+        public object? Bcc { get; set; }
         
         [WritableValue]
         [JsonProperty("subject")]
-        public object Subject { get; set; }
+        public object? Subject { get; set; }
         
         [WritableValue]
         [JsonProperty("dateAndTime")]
-        public object DateAndTime { get; set; }
+        public object? DateAndTime { get; set; }
         
         [WritableValue]
         [JsonProperty("emailContent")]
-        public object EmailContent { get; set; }
+        public object? EmailContent { get; set; }
         
         [WritableValue]
         [JsonProperty("countOfAttachment")]
-        public object CountOfAttachment { get; set; }
+        public object? CountOfAttachment { get; set; }
     }
 
     [DataContract]
@@ -145,7 +145,7 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         
         [WritableValue]
         [JsonProperty("order")]
@@ -153,7 +153,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("values")]
-        public List<Value> Values { get; set; }
+        public List<Value>? Values { get; set; }
     }
 
     [DataContract]
@@ -166,7 +166,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("statusMessage")]
-        public string StatusMessage { get; set; }
+        public string? StatusMessage { get; set; }
         
         [WritableValue]
         [JsonProperty("referenceNumber")]
@@ -174,41 +174,39 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("uploadFileName")]
-        public string UploadFileName { get; set; }
+        public string? UploadFileName { get; set; }
         
         [WritableValue]
         [JsonProperty("projectCode")]
-        public string ProjectCode { get; set; }
+        public string? ProjectCode { get; set; }
         
         [WritableValue]
         [JsonProperty("projectName")]
-        public string ProjectName { get; set; }
+        public string? ProjectName { get; set; }
         
         [WritableValue]
         [JsonProperty("label")]
-        public string Label { get; set; }
+        public string? Label { get; set; }
         
         [WritableValue]
         [JsonProperty("metaData")]
-        public string MetaData { get; set; }
+        public string? MetaData { get; set; }
         
         [WritableValue]
         [JsonProperty("clientTransactionNumber")]
-        public string ClientTransactionNumber { get; set; }
+        public string? ClientTransactionNumber { get; set; }
         
         [WritableValue]
         [JsonProperty("outputReferenceNumber")]
-        public object OutputReferenceNumber { get; set; }
+        public object? OutputReferenceNumber { get; set; }
         
         [WritableValue]
         [JsonProperty("documentSubType")]
-        public List<DocumentSubType> DocumentSubType { get; set; }
+        public List<DocumentSubType>? DocumentSubType { get; set; }
         
-        public static DocumentDataResponse? JsonDeserialize(string json)
+        public static DocumentDataResponse JsonDeserialize(string json)
         {
-            DocumentDataResponse? data = JsonConvert.DeserializeObject<DocumentDataResponse>(json);
-            return data;
-            
+            return JsonConvert.DeserializeObject<DocumentDataResponse>(json) ?? new DocumentDataResponse();
         }
     }
 
@@ -222,7 +220,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("fields")]
-        public List<Field> Fields { get; set; }
+        public List<Field>? Fields { get; set; }
     }
 
     [DataContract]
@@ -231,7 +229,7 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         
         [WritableValue]
         [JsonProperty("order")]
@@ -239,7 +237,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("rows")]
-        public List<Row> Rows { get; set; }
+        public List<Row>? Rows { get; set; }
     }
 
     [DataContract]
@@ -248,7 +246,7 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("value")]
-        public string FieldValue { get; set; }
+        public string? FieldValue { get; set; }
         
         [WritableValue]
         [JsonProperty("confidence")]
