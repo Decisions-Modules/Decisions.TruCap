@@ -16,15 +16,16 @@ namespace Decisions.TruCap.Steps
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-            Task<string> resultTask = TruCapRest.TruCapGet(baseUrl, authentication);
 
             try
             {
+                Task<string> resultTask = TruCapRest.TruCapGet(baseUrl, authentication);
+                
                 return OntologyResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
-                throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
@@ -42,15 +43,16 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseOntologyUrl(overrideBaseUrl);
-            Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
 
             try
             {
+                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
+                
                 return OntologyDetailsResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
-                throw new BusinessRuleException("The TruCap+ response could not be deserialized.", ex);
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
     }

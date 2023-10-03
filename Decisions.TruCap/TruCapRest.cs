@@ -13,20 +13,13 @@ public class TruCapRest
         request.Headers.Add("sid", authentication.sid);
         request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
-        try
-        {
-            HttpResponseMessage response = client.Send(request);
-            response.EnsureSuccessStatusCode();
+        HttpResponseMessage response = client.Send(request);
+        response.EnsureSuccessStatusCode();
 
-            Task<string> resultTask = response.Content.ReadAsStringAsync();
-            resultTask.Wait();
+        Task<string> resultTask = response.Content.ReadAsStringAsync();
+        resultTask.Wait();
 
-            return resultTask;
-        }
-        catch (Exception ex)
-        {
-            throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
-        }
+        return resultTask;
     }
 
     public static Task<string> TruCapDelete(string url, TruCapAuthentication authentication)
@@ -36,20 +29,13 @@ public class TruCapRest
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
         request.Headers.Add("sid", authentication.sid);
         request.Headers.Add("Authorization", $"Bearer {authentication.token}");
-
-        try
-        {
-            HttpResponseMessage response = client.Send(request);
-            response.EnsureSuccessStatusCode();
-            
-            Task<string> resultTask = response.Content.ReadAsStringAsync();
-            resultTask.Wait();
-            
-            return resultTask;
-        }
-        catch (Exception ex)
-        {
-            throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
-        }
+        
+        HttpResponseMessage response = client.Send(request);
+        response.EnsureSuccessStatusCode();
+        
+        Task<string> resultTask = response.Content.ReadAsStringAsync();
+        resultTask.Wait();
+        
+        return resultTask;
     }
 }

@@ -36,15 +36,15 @@ namespace Decisions.TruCap.Steps
 
             // Set the Authorization header
             request.Headers.Add("Authorization", $"Basic {base64Credentials}");
-            
-            HttpResponseMessage response = client.Send(request);
-            response.EnsureSuccessStatusCode();
-
-            Task<string> resultTask = response.Content.ReadAsStringAsync();
-            resultTask.Wait();
 
             try
             {
+                HttpResponseMessage response = client.Send(request);
+                response.EnsureSuccessStatusCode();
+
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                
                 return LoginResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
@@ -64,12 +64,19 @@ namespace Decisions.TruCap.Steps
             request.Headers.Add("sid", authentication.sid);
             request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
-            HttpResponseMessage response = client.Send(request);
+            try
+            {
+                HttpResponseMessage response = client.Send(request);
 
-            Task<string> resultTask = response.Content.ReadAsStringAsync();
-            resultTask.Wait();
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
 
-            return response.IsSuccessStatusCode;
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+            }
         }
 
         public bool Logout(TruCapAuthentication authentication,
@@ -82,12 +89,19 @@ namespace Decisions.TruCap.Steps
             request.Headers.Add("sid", authentication.sid);
             request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
-            HttpResponseMessage response = client.Send(request);
+            try
+            {
+                HttpResponseMessage response = client.Send(request);
 
-            Task<string> resultTask = response.Content.ReadAsStringAsync();
-            resultTask.Wait();
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
 
-            return response.IsSuccessStatusCode;
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+            }
         }
     }
 }
