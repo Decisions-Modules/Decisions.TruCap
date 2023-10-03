@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -11,11 +10,11 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("fieldName")]
-        public string FieldName { get; set; }
+        public string? FieldName { get; set; }
         
         [WritableValue]
         [JsonProperty("baseDataType")]
-        public string BaseDataType { get; set; }
+        public string? BaseDataType { get; set; }
         
         [WritableValue]
         [JsonProperty("fieldIndex")]
@@ -28,11 +27,11 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("fieldName")]
-        public string FieldName { get; set; }
+        public string? FieldName { get; set; }
         
         [WritableValue]
         [JsonProperty("baseDataType")]
-        public string BaseDataType { get; set; }
+        public string? BaseDataType { get; set; }
         
         [WritableValue]
         [JsonProperty("fieldIndex")]
@@ -45,39 +44,31 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("documentCategoryName")]
-        public string DocumentCategoryName { get; set; }
+        public string? DocumentCategoryName { get; set; }
         
         [WritableValue]
         [JsonProperty("projectName")]
-        public string ProjectName { get; set; }
+        public string? ProjectName { get; set; }
         
         [WritableValue]
         [JsonProperty("documentSubTypeName")]
-        public string DocumentSubTypeName { get; set; }
+        public string? DocumentSubTypeName { get; set; }
         
         [WritableValue]
         [JsonProperty("headerFields")]
-        public List<HeaderField> HeaderFields { get; set; }
+        public List<HeaderField>? HeaderFields { get; set; }
         
         [WritableValue]
         [JsonProperty("footerFields")]
-        public List<FooterField> FooterFields { get; set; }
+        public List<FooterField>? FooterFields { get; set; }
         
         [WritableValue]
         [JsonProperty("tables")]
-        public List<OntologyTable> Tables { get; set; }
+        public List<OntologyTable>? Tables { get; set; }
         
-        public static OntologyDetailsResponse? JsonDeserialize(string json)
+        public static OntologyDetailsResponse JsonDeserialize(string json)
         {
-            try
-            {
-                OntologyDetailsResponse? text = JsonConvert.DeserializeObject<OntologyDetailsResponse>(json);
-                return text;
-            }
-            catch (Exception e)
-            {
-                throw new BusinessRuleException(e.Message);
-            }
+            return JsonConvert.DeserializeObject<OntologyDetailsResponse>(json) ?? new OntologyDetailsResponse();
         }
     }
 
@@ -91,11 +82,11 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("tableName")]
-        public string TableName { get; set; }
+        public string? TableName { get; set; }
         
         [WritableValue]
         [JsonProperty("tableFields")]
-        public List<TableField> TableFields { get; set; }
+        public List<TableField>? TableFields { get; set; }
     }
 
     [DataContract]
@@ -104,11 +95,11 @@ namespace Decisions.TruCap.Api
     {
         [WritableValue]
         [JsonProperty("fieldName")]
-        public string FieldName { get; set; }
+        public string? FieldName { get; set; }
         
         [WritableValue]
         [JsonProperty("baseDataType")]
-        public string BaseDataType { get; set; }
+        public string? BaseDataType { get; set; }
         
         [WritableValue]
         [JsonProperty("fieldIndex")]

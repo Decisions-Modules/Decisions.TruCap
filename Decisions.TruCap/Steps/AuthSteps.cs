@@ -1,6 +1,7 @@
 using System.Text;
 using Decisions.TruCap.Api;
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 using DecisionsFramework.Design.Flow;
 using DecisionsFramework.Design.Flow.StepImplementations;
 using DecisionsFramework.Design.Properties;
@@ -13,7 +14,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class AuthSteps
     {
-        public async Task<LoginResponse> Login(
+        public LoginResponse Login(
             [PropertyClassification(0, "Username", "Credentials")]string username,
             [PropertyClassification(1, "Password", "Credentials")]string password,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
@@ -38,19 +39,17 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                HttpResponseMessage response = await client.SendAsync(request);
+                HttpResponseMessage response = client.Send(request);
                 response.EnsureSuccessStatusCode();
 
-                return LoginResponse.JsonDeserialize(await response.Content.ReadAsStringAsync());
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+                
+                return LoginResponse.JsonDeserialize(resultTask.Result);
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("timed out"))
-                {
-                    throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
-                }
-
-                throw;
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
@@ -58,24 +57,51 @@ namespace Decisions.TruCap.Steps
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
-                $"{baseUrl}/login/status?sid={authentication.sid}&token={authentication.token}", authentication);
+            HttpClient client = new HttpClient();
+        
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, 
+                $"{baseUrl}/login/status?sid={authentication.sid}&token={authentication.token}");
+            request.Headers.Add("sid", authentication.sid);
+            request.Headers.Add("Authorization", $"Bearer {authentication.token}");
+        
+            try
+            {
+                HttpResponseMessage response = client.Send(request);
 
-            return response.Result.IsSuccessStatusCode;
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+            }
         }
 
-        public string? Logout(TruCapAuthentication authentication,
+        public bool Logout(TruCapAuthentication authentication,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseUrl(overrideBaseUrl);
-            HttpResponseMessage response = TruCapRest.TruCapDelete($"{baseUrl}/logout", authentication).Result;
-
-            if (response.IsSuccessStatusCode)
+            HttpClient client = new HttpClient();
+        
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, $"{baseUrl}/logout");
+            request.Headers.Add("sid", authentication.sid);
+            request.Headers.Add("Authorization", $"Bearer {authentication.token}");
+        
+            try
             {
-                return "Logout successful.";
-            }
+                HttpResponseMessage response = client.Send(request);
 
-            return "Could not logout.";
+                Task<string> resultTask = response.Content.ReadAsStringAsync();
+                resultTask.Wait();
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
+            }
         }
     }
 }

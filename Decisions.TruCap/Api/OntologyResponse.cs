@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -15,7 +14,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("documentCategoryName")]
-        public string DocumentCategoryName { get; set; }
+        public string? DocumentCategoryName { get; set; }
         
         [WritableValue]
         [JsonProperty("projectId")]
@@ -23,7 +22,7 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("projectName")]
-        public string ProjectName { get; set; }
+        public string? ProjectName { get; set; }
         
         [WritableValue]
         [JsonProperty("documentSubTypeId")]
@@ -31,19 +30,11 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("documentSubTypeName")]
-        public string DocumentSubTypeName { get; set; }
+        public string? DocumentSubTypeName { get; set; }
         
         public static OntologyResponse[] JsonDeserialize(string json)
         {
-            try
-            {
-                OntologyResponse[]? text = JsonConvert.DeserializeObject<OntologyResponse[]>(json);
-                return text;
-            }
-            catch (Exception e)
-            {
-                throw new BusinessRuleException(e.Message);
-            }
+            return JsonConvert.DeserializeObject<OntologyResponse[]>(json) ?? new OntologyResponse[]{};
         }
     }
 }

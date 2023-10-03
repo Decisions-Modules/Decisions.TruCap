@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using DecisionsFramework;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using Newtonsoft.Json;
 
@@ -15,19 +14,19 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("Category")]
-        public string Category { get; set; }
+        public string? Category { get; set; }
         
         [WritableValue]
         [JsonProperty("Project")]
-        public string Project { get; set; }
+        public string? Project { get; set; }
         
         [WritableValue]
         [JsonProperty("Subtype")]
-        public string Subtype { get; set; }
+        public string? Subtype { get; set; }
         
         [WritableValue]
         [JsonProperty("DocumentName")]
-        public string DocumentName { get; set; }
+        public string? DocumentName { get; set; }
         
         [WritableValue]
         [JsonProperty("ParentID")]
@@ -35,47 +34,39 @@ namespace Decisions.TruCap.Api
         
         [WritableValue]
         [JsonProperty("CurrentStage")]
-        public string CurrentStage { get; set; }
+        public string? CurrentStage { get; set; }
         
         [WritableValue]
         [JsonProperty("Duration")]
-        public string Duration { get; set; }
+        public string? Duration { get; set; }
         
         [WritableValue]
         [JsonProperty("DateReceived")]
-        public string DateReceived { get; set; }
+        public string? DateReceived { get; set; }
         
         [WritableValue]
         [JsonProperty("Prioritized")]
-        public string Prioritized { get; set; }
+        public string? Prioritized { get; set; }
         
         [WritableValue]
         [JsonProperty("UserAllocated")]
-        public string UserAllocated { get; set; }
+        public string? UserAllocated { get; set; }
         
         [WritableValue]
         [JsonProperty("ReadabilityScore")]
-        public string ReadabilityScore { get; set; }
+        public string? ReadabilityScore { get; set; }
         
         [WritableValue]
         [JsonProperty("NextAction")]
-        public string NextAction { get; set; }
+        public string? NextAction { get; set; }
         
         [WritableValue]
         [JsonProperty("CurrentStageCode")]
-        public string CurrentStageCode { get; set; }
+        public string? CurrentStageCode { get; set; }
         
-        public static DocumentMonitorResponse[]? JsonDeserialize(string json)
+        public static DocumentMonitorResponse[] JsonDeserialize(string json)
         {
-            try
-            {
-                DocumentMonitorResponse[]? text = JsonConvert.DeserializeObject<DocumentMonitorResponse[]>(json);
-                return text;
-            }
-            catch (Exception e)
-            {
-                throw new BusinessRuleException(e.Message);
-            }
+            return JsonConvert.DeserializeObject<DocumentMonitorResponse[]>(json) ?? new DocumentMonitorResponse[]{};
         }
     }
 }

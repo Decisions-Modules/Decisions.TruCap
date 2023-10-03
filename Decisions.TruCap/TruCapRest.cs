@@ -1,10 +1,11 @@
 using Decisions.TruCap.Data;
+using DecisionsFramework;
 
 namespace Decisions.TruCap;
 
 public class TruCapRest
 {
-    public static async Task<HttpResponseMessage> TruCapGet(string url, TruCapAuthentication authentication)
+    public static string TruCapGet(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
         
@@ -12,46 +13,29 @@ public class TruCapRest
         request.Headers.Add("sid", authentication.sid);
         request.Headers.Add("Authorization", $"Bearer {authentication.token}");
         
-        try
-        {
-            HttpResponseMessage response = await client.SendAsync(request);
+        HttpResponseMessage response = client.Send(request);
+        response.EnsureSuccessStatusCode();
 
-            return response;
-        }
-        catch (Exception ex)
-        {
-            if (ex.Message.Contains("timed out"))
-            {
-                throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
-            }
+        Task<string> resultTask = response.Content.ReadAsStringAsync();
+        resultTask.Wait();
 
-            throw;
-        }
+        return resultTask.Result;
     }
 
-    public static async Task<HttpResponseMessage> TruCapDelete(string url, TruCapAuthentication authentication)
+    public static string TruCapDelete(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
 
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
         request.Headers.Add("sid", authentication.sid);
         request.Headers.Add("Authorization", $"Bearer {authentication.token}");
-
-        try
-        {
-            HttpResponseMessage response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            
-            return response;
-        }
-        catch (Exception ex)
-        {
-            if (ex.Message.Contains("timed out"))
-            {
-                throw new Exception("TruCap+ took too long to respond and has timed out.", ex);
-            }
-
-            throw;
-        }
+        
+        HttpResponseMessage response = client.Send(request);
+        response.EnsureSuccessStatusCode();
+        
+        Task<string> resultTask = response.Content.ReadAsStringAsync();
+        resultTask.Wait();
+        
+        return resultTask.Result;
     }
 }

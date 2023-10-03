@@ -12,7 +12,7 @@ namespace Decisions.TruCap.Steps
     [ShapeImageAndColorProvider(null, TruCapSettings.TRUCAP_IMAGES_PATH)]
     public class DocumentMonitorSteps
     {
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByDetails(TruCapAuthentication authentication,
             string startDate, string endDate, string project, string docSubType,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
@@ -27,21 +27,22 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet(
-                $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/{startDate}/ToDate/{endDate}",
-                authentication);
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                string result = TruCapRest.TruCapGet(
+                    $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/{startDate}/ToDate/{endDate}",
+                    authentication);
+                
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByDocumentHeaderId(TruCapAuthentication authentication, int documentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (documentId == null)
@@ -50,35 +51,37 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                string result = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
+                
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByParentId(TruCapAuthentication authentication, int parentId,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                string result = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
+                
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
 
-        public async Task<DocumentMonitorResponse[]> GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
+        public DocumentMonitorResponse[] GetDocumentMonitorListByDocumentName(TruCapAuthentication authentication, string documentName,
             [PropertyClassification(0, "Override Base URL", "Settings")] string? overrideBaseUrl)
         {
             if (string.IsNullOrEmpty(documentName))
@@ -87,15 +90,16 @@ namespace Decisions.TruCap.Steps
             }
             
             string baseUrl = ModuleSettingsAccessor<TruCapSettings>.GetSettings().GetBaseDocumentMonitorUrl(overrideBaseUrl);
-            Task<HttpResponseMessage> response = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
 
             try
             {
-                return DocumentMonitorResponse.JsonDeserialize(await response.Result.Content.ReadAsStringAsync());
+                string result = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
+                
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
-                throw new Exception(await response.Result.Content.ReadAsStringAsync());
+                throw new BusinessRuleException("The request to TruCap+ was unsuccessful.", ex);
             }
         }
     }
