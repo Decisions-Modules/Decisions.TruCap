@@ -70,9 +70,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/{documentId}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/{documentId}", authentication);
                 
-                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
+                return DocumentDataResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -92,9 +92,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}", authentication);
                 
-                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
+                return DocumentDataResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -114,9 +114,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/label/{label}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/label/{label}", authentication);
                 
-                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
+                return DocumentDataResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -136,9 +136,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}", authentication);
                 
-                return DocumentDataResponse.JsonDeserialize(resultTask.Result);
+                return DocumentDataResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -158,9 +158,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/{documentId}/status", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/{documentId}/status", authentication);
                 
-                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
+                return DocumentStatusResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -180,9 +180,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}/status", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/referencenumber/{referenceNumber}/status", authentication);
                 
-                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
+                return DocumentStatusResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -202,9 +202,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/label/{label}/status", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/label/{label}/status", authentication);
                 
-                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
+                return DocumentStatusResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -224,9 +224,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}/status", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/clientTransactionNumber/{clientTransactionNumber}/status", authentication);
                 
-                return DocumentStatusResponse.JsonDeserialize(resultTask.Result);
+                return DocumentStatusResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {

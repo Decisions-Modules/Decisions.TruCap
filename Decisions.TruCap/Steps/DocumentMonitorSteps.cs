@@ -30,11 +30,11 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet(
+                string result = TruCapRest.TruCapGet(
                     $"{baseUrl}/Project/{project}/DocumentSubType/{docSubType}/FromDate/{startDate}/ToDate/{endDate}",
                     authentication);
                 
-                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -54,9 +54,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/DocumentId/{documentId}", authentication);
                 
-                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -71,9 +71,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/ParentId/{parentId}", authentication);
                 
-                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -93,9 +93,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/DocumentName/{documentName}", authentication);
                 
-                return DocumentMonitorResponse.JsonDeserialize(resultTask.Result);
+                return DocumentMonitorResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {

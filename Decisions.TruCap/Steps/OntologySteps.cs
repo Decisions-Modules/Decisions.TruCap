@@ -19,9 +19,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet(baseUrl, authentication);
+                string result = TruCapRest.TruCapGet(baseUrl, authentication);
                 
-                return OntologyResponse.JsonDeserialize(resultTask.Result);
+                return OntologyResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {
@@ -46,9 +46,9 @@ namespace Decisions.TruCap.Steps
 
             try
             {
-                Task<string> resultTask = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
+                string result = TruCapRest.TruCapGet($"{baseUrl}/{project}/{docSubType}", authentication);
                 
-                return OntologyDetailsResponse.JsonDeserialize(resultTask.Result);
+                return OntologyDetailsResponse.JsonDeserialize(result);
             }
             catch (Exception ex)
             {

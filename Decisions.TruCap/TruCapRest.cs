@@ -5,7 +5,7 @@ namespace Decisions.TruCap;
 
 public class TruCapRest
 {
-    public static Task<string> TruCapGet(string url, TruCapAuthentication authentication)
+    public static string TruCapGet(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
         
@@ -19,10 +19,10 @@ public class TruCapRest
         Task<string> resultTask = response.Content.ReadAsStringAsync();
         resultTask.Wait();
 
-        return resultTask;
+        return resultTask.Result;
     }
 
-    public static Task<string> TruCapDelete(string url, TruCapAuthentication authentication)
+    public static string TruCapDelete(string url, TruCapAuthentication authentication)
     {
         HttpClient client = new HttpClient();
 
@@ -36,6 +36,6 @@ public class TruCapRest
         Task<string> resultTask = response.Content.ReadAsStringAsync();
         resultTask.Wait();
         
-        return resultTask;
+        return resultTask.Result;
     }
 }
