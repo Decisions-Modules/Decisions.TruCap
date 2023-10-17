@@ -50,7 +50,7 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
      {
          get
          {
-             return "A license for SaaS TruCap+ is needed. Learn more at: https://www.datamatics.com/intelligent-automation/idp-trucap.";
+             return "A license for SaaS TruCap+ is needed. Learn more at: https://www.datamatics.com/lp/intelligent-automation/idp-trucap/partner/decisions?utm_source=decisions.com&utm_medium=module_link_click&utm_content=ad1";
          }
          set { }
      }
