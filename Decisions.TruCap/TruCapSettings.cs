@@ -20,55 +20,56 @@ namespace Decisions.TruCap;
 [Writable]
 public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPropertyChanged, IValidationSource
 {
-    internal const string TRUCAP_IMAGES_PATH = "../wwwroot/Content/CustomModuleImages/Decisions.TruCap/|trucap.svg";
-    
+    internal const string TRUCAP_IMAGES_PATH = Constants.CUSTOM_MODULE_IMAGES_LOCATION + "/Decisions.TruCap/|trucap.svg";
+
     public TruCapSettings()
     {
         this.EntityName = "TruCap+ Settings";
     }
-    
+
     [ORMField]
-     private string baseUrl = "https://localhost:44318/api/v2";
+    private string baseUrl = "https://localhost:44318/api/v2";
 
-     [PropertyClassification(0, "Base URL", "TruCap+ Settings")]
-     [DataMember]
-     [WritableValue]
-     public string BaseUrl
-     {
-         get => baseUrl;
-         set
-         {
-             baseUrl = value;
-             OnPropertyChanged(nameof(BaseUrl));
-         }
-     }
-     
-     [PropertyClassification(1, " ", "TruCap+ Settings")]
-     [ReadonlyEditor]
-     [ExcludeInDescription]
-     public string ApiKeyMessage
-     {
-         get
-         {
-             return "A license for SaaS TruCap+ is needed. Learn more at: https://www.datamatics.com/lp/intelligent-automation/idp-trucap/partner/decisions?utm_source=decisions.com&utm_medium=module_link_click&utm_content=ad1";
-         }
-         set { }
-     }
+    [PropertyClassification(0, "Base URL", "TruCap+ Settings")]
+    [DataMember]
+    [WritableValue]
+    public string BaseUrl
+    {
+        get => baseUrl;
+        set
+        {
+            baseUrl = value;
+            OnPropertyChanged(nameof(BaseUrl));
+        }
+    }
 
-     public string GetBaseUrl(string? overrideBaseUrl) {
+    [PropertyClassification(1, " ", "TruCap+ Settings")]
+    [ReadonlyEditor]
+    [ExcludeInDescription]
+    public string ApiKeyMessage
+    {
+        get
+        {
+            return "A license for SaaS TruCap+ is needed. Learn more at: https://www.datamatics.com/lp/intelligent-automation/idp-trucap/partner/decisions?utm_source=decisions.com&utm_medium=module_link_click&utm_content=ad1";
+        }
+        set { }
+    }
+
+    public string GetBaseUrl(string? overrideBaseUrl)
+    {
         string url = baseUrl;
-        if (!string.IsNullOrEmpty(overrideBaseUrl)) 
+        if (!string.IsNullOrEmpty(overrideBaseUrl))
             url = overrideBaseUrl;
 
         return url;
     }
 
-    public string GetBaseDocumentUrl(string? overrideBaseUrl) 
+    public string GetBaseDocumentUrl(string? overrideBaseUrl)
     {
         return $"{GetBaseUrl(overrideBaseUrl)}/document";
     }
-    
-    public string GetBaseDocumentMonitorUrl(string? overrideBaseUrl) 
+
+    public string GetBaseDocumentMonitorUrl(string? overrideBaseUrl)
     {
         return $"{GetBaseUrl(overrideBaseUrl)}/document/monitor";
     }
@@ -89,14 +90,14 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-    
+
     public ValidationIssue[] GetValidationIssues()
     {
         List<ValidationIssue> issues = new List<ValidationIssue>();
 
         return issues.ToArray();
     }
-    
+
     public override BaseActionType[] GetActions(AbstractUserContext userContext, EntityActionType[] types)
     {
         List<BaseActionType> actions = new List<BaseActionType>();
@@ -112,7 +113,7 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
 
         if (canAdministrate)
         {
-            actions.Add(new EditEntityAction(typeof(TruCapSettings), "Edit", "Edits TruCap+ Module Settings") 
+            actions.Add(new EditEntityAction(typeof(TruCapSettings), "Edit", "Edits TruCap+ Module Settings")
             {
                 IsDefaultGridAction = true,
                 OkActionName = "SAVE",
@@ -122,7 +123,7 @@ public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPro
 
         return actions.ToArray();
     }
-    
+
     private void SaveSettings(AbstractUserContext userContext, object obj)
     {
         TruCapSettings settings = obj as TruCapSettings;
