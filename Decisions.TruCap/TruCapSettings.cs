@@ -20,8 +20,8 @@ namespace Decisions.TruCap;
 [Writable]
 public class TruCapSettings : AbstractModuleSettings, IInitializable, INotifyPropertyChanged, IValidationSource
 {
-    internal const string TRUCAP_IMAGES_PATH = "../wwwroot/Content/CustomModuleImages/Decisions.TruCap/|trucap.svg";
-    
+    internal const string TRUCAP_IMAGES_PATH = Constants.CUSTOM_MODULE_IMAGES_LOCATION +"/Decisions.TruCap/|trucap.svg";
+
     public TruCapSettings()
     {
         this.EntityName = "TruCap+ Settings";
